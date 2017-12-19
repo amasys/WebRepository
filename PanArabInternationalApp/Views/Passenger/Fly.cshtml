@@ -1,0 +1,310 @@
+﻿@using PanArabInternationalApp.Models
+@{
+    ViewBag.Title = "Fly";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<link href="~/dist/css/AdminLTE.css" rel="stylesheet" />
+<link href="~/adminLite/bootstrapSwitch/bootstrap-toggle.min.css" rel="stylesheet" />
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+
+    .toggle.android {
+        border-radius: 0px;
+        height: 20px;
+    }
+
+        .toggle.android .toggle-handle {
+            border-radius: 0px;
+        }
+
+    table {
+        max-width: 300px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title"> Fly Details</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="modal fade" id="modal-default">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title">Message</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p id="messagebody"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <!-- Custom Tabs -->
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Fly Detials</a></li>
+                                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Clearence Fly Details</a></li>
+                                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true)
+
+
+
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Form SL </th>
+                                                    <th>Passenger Name</th>
+                                                    <th>Passport No</th>
+                                                    <th>Flight No</th>
+                                                    
+                                                    <th>Fly Date</th>
+                                                    <th>Fly Destination</th>
+                                                    <th>Tra.AG Name </th>
+                                                    <th>Delevery Date </th>
+
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @{
+                                        foreach (var value in (List<Fly>)ViewBag.FlyList)
+                                        {
+                                            <tr>
+                                                <td>@value.FormSl</td>
+                                                <td>@value.Pname</td>
+                                                <td>@value.PassNo</td>
+                                                <td><input type="text" id="FlighNo" class="form-control" value="" name="FlightNo" placeholder="Flight Number" /></td>
+
+                                                <td><input type="text" id="fdate" class="form-control" value="@value.FlyDate" name="FlyDate" placeholder="Fly Date" /></td>
+                                                <td><input type="text" class="form-control" placeholder="Destination" value="@value.Destination" name="Destination" /></td>
+                                                <td><input type="text" class="form-control" placeholder="Tra.AG Name" value="@value.TraAgName" name="TraAgName"/></td>
+                                                <td><input type="text" class="form-control" id="FileDeleveryDate" placeholder="File Delvery Date" value="" name="FileDeleveryDate" /></td>
+
+                                                <td><span class="label label-default">@value.Status</span></td>
+                                                <td>
+                                                    <button type="button" id="action" class="btn btn-default btn-sm"><i class="fa fa-edit "></i></button>
+                                                </td>
+                                            </tr>
+                                        }
+                                                }
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Form SL </th>
+                                                    <th>Passenger Name</th>
+                                                    <th>Passport No</th>
+                                                    <th>Flight No</th>
+
+                                                    <th>Fly Date</th>
+                                                    <th>Fly Destination</th>
+                                                    <th>Tra.AG Name </th>
+                                                    <th>Delevery Date </th>
+
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+
+                                    }
+
+                                </div>
+                                <div class="tab-pane" id="tab_2">
+                                    <table id="example2" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Form SL </th>
+                                                <th>Passenger Name</th>
+                                                <th>Passport No</th>
+                                                <th>Fly Date</th>
+                                                <th>Fly Destination</th>
+                                                <th>Tra.AG Name </th>
+
+                                                <th>Status</th>
+                                                <th>Action</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @{
+                                                foreach (var value in (List<Fly>)ViewBag.ClearenceList)
+                                                {
+                                                    <tr>
+                                                        <td>@value.FormSl</td>
+                                                        <td>@value.Pname</td>
+                                                        <td>@value.PassNo</td>
+                                                        <td>@value.FlyDate</td>
+                                                        <td>@value.Destination</td>
+                                                        <td>@value.TraAgName</td>
+                                                        <td><span class="label label-default">@value.Status</span></td>
+                                                        <td>
+                                                            <button type="button" id="action" class="btn btn-default btn-sm"><i class="fa fa-edit "></i></button>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Form SL </th>
+                                                <th>Passenger Name</th>
+                                                <th>Passport No</th>
+                                                <th>Fly Date</th>
+                                                <th>Fly Destination</th>
+                                                <th>Tra.AG Name </th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+
+
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <!-- /.tab-pane -->
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
+                        <!-- nav-tabs-custom -->
+                    </div>
+                    <!-- /.col -->
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/adminLite/bootstrapSwitch/bootstrap-toggle.min.js"></script>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        //Date picker
+        $('#fdate').datepicker({
+            autoclose: true
+        });
+        $('#FileDeleveryDate').datepicker({
+            autoclose: true
+        });
+
+        $("#example1").on('click', '#action', action);
+
+
+        function action() {
+            var table = $('#example1').DataTable();
+
+            var index = $(this).closest('td').parent()[0].sectionRowIndex;
+
+            //var data = table.row(index).data();
+
+
+            var FormSl = table.cell(index, 0).data();
+            var PName = table.cell(index, 1).data();
+            var PassNo = table.cell(index, 2).data();
+            var FlyDate = table.cell(index, 4).nodes().to$().find('input').val();
+            var Destination = table.cell(index, 5).nodes().to$().find('input').val();
+            var TraAgName = table.cell(index, 6).nodes().to$().find('input').val();
+            var FlighNo = table.cell(index, 3).nodes().to$().find('input').val();
+            var FileDeleveryDate = table.cell(index, 7).nodes().to$().find('input').val();
+
+
+            var value = {
+                Formsl: FormSl,
+                PName: PName,
+                PassNo: PassNo,
+                FlyDate: FlyDate,
+                Destination: Destination,
+                TraAgName: TraAgName,
+                FlighNo: FlighNo,
+                FileDeleveryDate: FileDeleveryDate
+
+            }
+
+
+            if (value.FlyDate === '') {
+                alert('Please Select Fly Date');
+                return;
+            }
+
+            if (value.FlighNo === '') {
+                alert('Please Input Flight NO');
+                return;
+            }
+
+
+
+            $.ajax({
+                type: "POST",
+                url: '/Passenger/Fly',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(value),
+                success: function (data) {
+                    $('#messagebody').append(data);
+                    $('#modal-default').modal();
+
+
+
+                }
+            });
+        }
+
+
+        $('#modal-default').on('hide.bs.modal', function (e) {
+            var url = '@Url.Action("Fly", "Passenger")';
+            window.location.href = url;
+        });
+
+        $('#example1').DataTable({
+            "scrollX": true
+        });
+        $('#example2').DataTable();
+    </script>
+
+}

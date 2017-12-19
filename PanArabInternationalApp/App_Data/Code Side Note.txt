@@ -1,0 +1,20 @@
+1. InsertRestaurantOrderItem 
+     -> Add New Property in OrderItem
+		Name Of : Options_ids
+
+And Query Column Add [option_ids] 
+
+2. Reader To Read Order Item 
+
+	->if (oReader["option_Ids"] != DBNull.Value)
+            {
+                arcs_order_item.Options_ids = Convert.ToString(oReader["option_Ids"]);
+            }
+3. UpdateRestaurantOrderItem 
+
+	-> Add Column  Options_ids
+
+	query = String.Format("INSERT INTO rcs_order_item ([order_id],[recipe_id],[package_id],[name],[quantity],[price],[extra_price],[sent_to_kitchen]" +
+                       ",[kitchen_processing],[kitchen_done],[last_modify_time],[options],[options_minus],[order_package_id],[option_ids])" + "VALUES({0},{1},{2},'{3}',{4},{5} ,{6},{7},{8},{9},'{10}','{11}','{12}',{13},'{14}')",
+                       item.OrderId, item.RecipeId, item.PackageId, item.Name.Replace("'", " "), item.Quantity, item.Price, item.ExtraPrice, item.SentToKitchen, item.KitchenProcessing, item.KitchenDone
+                       , item.LastModifyTime, item.Options, item.MinusOptions, item.orderPackageId,item.Options_ids);

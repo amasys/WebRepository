@@ -1,0 +1,609 @@
+﻿@using PanArabInternationalApp
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+
+    var report = (Sp_PassengerReportStatus_Result) ViewBag.Result;
+}
+
+<link href="~/dist/css/AdminLTE.css" rel="stylesheet" />
+
+<div class="row">
+<div class="col-md-12">
+<div class="box box-default">
+    <div class="box-header ui-sortable-handle">
+        <i class="fa  fa-info"></i>
+        <h4 class="box-title text-bold text-uppercase">Select Passegner Serial No</h4>
+    </div>
+    <div class="box-body">
+        <div class="col-md-12" style="padding-left: 0px">
+
+            <form class="form-horizontal" method="POST">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa  fa-bars"></i></span>
+
+                            <select class="form-control select2" name="Formsl" placeholder="Select Passenger">
+                                @{
+                                    <option value="">Select Passenger</option>
+                                    foreach (var value in (Dictionary<string, string>)ViewBag.PList)
+                                    {
+
+                                    <option value="@value.Key">Form NO : @value.Key Name :  @value.Value </option>
+                                   }
+                            }
+                                 
+
+                            </select>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class ="col-md-3"><button type="submit" class="btn btn-block btn-primary btn-flat">Show</button></div>
+                    <div class ="col-md-3"><button type="button" class="btn btn-block btn-success btn-flat" onclick="PrintElem('print')">Print</button></div>
+                   
+                   
+
+                </div>
+
+            </form>
+        </div>
+
+
+    </div>
+
+
+</div>
+<div class="box box-info" id="print">
+<div class="box-header ui-sortable-handle" style="cursor: move;">
+    <i class="fa  fa-bookmark-o"></i>
+
+    <h4 class="box-title text-bold text-uppercase">Passenger Status Report</h4>
+    <hr/>
+    <h3 class="text-uppercase text-center ">pan arab international</h3>
+    <p class="text-center">
+        <b>Address</b>
+    </p>
+
+</div>
+    @if (report != null)
+    {
+
+        <div class="box-body">
+            <div class="box box-default">
+                <div class="box-header ui-sortable-handle">
+                    <i class="fa  fa-info"></i>
+                    <p class="box-title text-uppercase">passenger information</p>
+                </div>
+                <div class="box-body">
+                    <div class="col-md-12" style="padding-left: 0px">
+                        <form class="form-horizontal" method="POST">
+                            <table class="table">
+                                <tr>
+                                    <td>Form SL </td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.PslNo</td>
+                                    <td> </td>
+                                    <td>District </td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.district</td>
+                                </tr>
+                                <tr>
+                                    <td>Passenger Name </td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.Pname</td>
+
+                                    <td> </td>
+                                    <td>Post Code</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.PostOffice</td>
+                                </tr>
+                                <tr>
+                                    <td>Father Name </td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.PfatherName</td>
+
+                                    <td> </td>
+                                    <td>Contact Ammount</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.PContactAmount</td>
+                                </tr>
+                                <tr>
+                                    <td>Gender </td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.PGender</td>
+
+                                    <td></td>
+                                    <td>Pressent Address</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.PresentAddress</td>
+                                </tr>
+                                <tr>
+                                    <td>Husband Name </td>
+                                    <td>:</td>
+                                    <td class="text-bold">N/A</td>
+
+                                    <td></td>
+                                    <td>Perment Address</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.PermanentAddress</td>
+                                </tr>
+                                <tr>
+                                    <td>Mother Name </td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.PmotherName</td>
+
+                                    <td> </td>
+                                    <td>Date Of Birth</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToDateTime(report.DOB).ToString("dd-MMM-yy")</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>Contact No </td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.PContactNo</td>
+
+                                    <td> </td>
+                                    <td>National Id Card</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.PNationalIdCard</td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="box box-default">
+                <div class="box-header ui-sortable-handle">
+                    <i class="fa  fa-info"></i>
+                    <p class="box-title text-uppercase">Passport information</p>
+                </div>
+                @if (report.Ispassport==true)
+                {
+                    <div class="box-body">
+                        <div class="col-md-12" style="padding-left: 0px">
+                            <form class="form-horizontal">
+                                <table class="table">
+                                    <tr>
+                                        <td>Passport No</td>
+                                        <td>:</td>
+                                        <td class="text-bold">@report.PassportNo</td>
+                                        <td> </td>
+                                        <td>Passport Make By</td>
+                                        <td>:</td>
+                                        <td class="text-bold">@report.PassportMakeBy</td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Passport Expire Date</td>
+                                        <td>:</td>
+
+                                        <td class="text-bold">@Convert.ToDateTime(report.PassportExpireDate).ToString("dd-MMM-yy")</td>
+                                        <td> </td>
+                                        <td>Passport Submite Date</td>
+                                        <td>:</td>
+                                        <td class="text-bold">@Convert.ToDateTime(report.PassportSubmitDate).ToString("dd-MMM-yy")</td>
+                                    </tr>
+                                    
+                                </table>
+                            </form>
+                        </div>
+
+
+                    </div>
+
+                }
+                else
+                {
+                    <div class="box-body">
+                        <div class="col-md-12" style="padding-left: 0px">
+                            <form class="form-horizontal">
+                                <table class="table">
+                                    <tr>
+                                        <td>Passport No</td>
+                                        <td>:</td>
+                                        <td class="text-bold">@report.PassportNo</td>
+                                        <td> </td>
+                                        <td>Slip No </td>
+                                        <td>:</td>
+                                        <td class="text-bold">@report.PSlipNo</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Passport Make By</td>
+                                        <td>:</td>
+                                        <td class="text-bold">@report.PassportMakeBy</td>
+                                        <td> </td>
+                                        <td>Passport Delevery Date </td>
+                                        <td>:</td>
+                                        <td class="text-bold">@Convert.ToDateTime(report.PassportDeleveryDate).ToString("dd-MMM-yy")</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Passport Submit Date</td>
+                                        <td>:</td>
+                                        <td class="text-bold">@Convert.ToDateTime(report.PassportSubmitDate).ToString("dd-MMM-yy")</td>
+                                        <td> </td>
+                                        <td>Remarks</td>
+                                        <td>:</td>
+                                        <td class="text-bold">@report.PasportRemarks</td>
+                                    </tr>
+
+                                </table>
+                            </form>
+                        </div>
+
+
+                    </div>
+
+                }
+              
+
+            </div>
+
+            <div class="box box-default">
+                <div class="box-header ui-sortable-handle">
+                    <i class="fa  fa-info"></i>
+                    <p class="box-title text-uppercase">Medical Report</p>
+                </div>
+                <div class="box-body">
+                    <div class="col-md-12" style="padding-left: 0px">
+                        <form class="form-horizontal">
+                            <table class="table">
+                                <tr>
+                                    <td>Medical Date</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToDateTime(report.MedicalDate).ToString("dd-MMM-yy")</td>
+                                    <td> </td>
+                                    <td>Medical Status</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.MedicalReport</td>
+                                </tr>
+                                <tr>
+                                    <td>Medical Expired Date</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToDateTime(report.MedicalExpDate).ToString("dd-MMM-yy")</td>
+                                    <td> </td>
+                                    <td>Remarks</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.ReportDescription</td>
+                                </tr>
+                                @if (report.MedicalReport == "UN-FIT")
+                                {
+                                    <tr>
+                                        <td>Medical ContactAmount</td>
+                                        <td>:</td>
+                                        <td class="text-bold" colspan="7">@report.MedicalContactAmount</td>
+
+                                    </tr>
+                                }
+                               
+
+                            </table>
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        <div class="box box-default">
+            <div class="box-header ui-sortable-handle">
+                <i class="fa  fa-info"></i>
+                <p class="box-title text-uppercase">Mofa(Ministry Of Foreign Affairs)</p>
+            </div>
+            <div class="box-body">
+                <div class="col-md-12" style="padding-left: 0px">
+                    <form class="form-horizontal">
+                        <table class="table">
+                            <tr>
+                                <td>Mofa Number</td>
+                                <td>:</td>
+                                <td class="text-bold">@report.MofaNo</td>
+                                <td> </td>
+                                <td>Mofa Enroll Date</td>
+                                <td>:</td>
+                                <td class="text-bold">@Convert.ToDateTime(report.MofaEnrollDate).ToString("dd-MMM-yy")</td>
+                            </tr>
+
+
+
+                        </table>
+                    </form>
+                </div>
+
+
+            </div>
+
+
+        </div>
+            <div class="box box-default">
+                <div class="box-header ui-sortable-handle">
+                    <i class="fa  fa-info"></i>
+                    <p class="box-title text-uppercase">PC Information</p>
+                </div>
+                <div class="box-body">
+                    <div class="col-md-12" style="padding-left: 0px">
+                        <form class="form-horizontal">
+                            <table class="table">
+                                <tr>
+                                    <td>Clearence Date</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToDateTime(report.PCDate).ToString("dd-MMM-yy")</td>
+                                    <td> </td>
+                                    <td>Remarks</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.CL_Status</td>
+                                </tr>
+                                <tr>
+                                    <td>Contact Ammount</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.Pc_ContactAmmount</td>
+                                    <td> </td>
+                                    <td>Console Status</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.ByOwnRemarks</td>
+                                </tr>
+
+
+                            </table>
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="box box-default">
+                <div class="box-header ui-sortable-handle">
+                    <i class="fa  fa-info"></i>
+                    <p class="box-title text-uppercase">Visa Information</p>
+                </div>
+                <div class="box-body">
+                    <div class="col-md-12" style="padding-left: 0px">
+                        <form class="form-horizontal">
+                            <table class="table">
+                                <tr>
+                                    <td>Visa Reff No</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.VisaReffNo</td>
+                                    <td></td>
+                                    <td>Issue Date</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToDateTime(report.IssueDate).ToString("dd-MMM-yy")</td>
+                                    <td></td>
+                                     <td>Issue Place</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.IssuePlace</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Visa Category</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToString(report.Cateogry)</td>
+                                    <td> </td>
+                                    <td>Visa No</td>
+                                    <td>:</td>
+                                    <td class="text-bold" colspan="7">@report.VisaNo</td>
+
+                                </tr>
+                                @if (report.Cateogry == "Driver")
+                                {
+                                    <tr>
+                                        <td>Driving Licence</td>
+                                        <td>:</td>
+                                        <td class="text-bold">@Convert.ToString(report.DrivingLicnc)</td>
+                                        <td> </td>
+                                        <td>Contract Amount</td>
+                                        <td>:</td>
+                                        <td class="text-bold" colspan="7">@report.ContractAmount</td>
+
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>Sponser Id</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToString(report.SponserId)</td>
+                                    <td> </td>
+                                    <td>Sponser Name</td>
+                                    <td>:</td>
+                                    <td class="text-bold" colspan="7">@report.SponcerName</td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>Okeyla Date</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToDateTime(report.OkeylaDate).ToString("dd-MMM-yy")</td>
+                                    <td> </td>
+                                    <td>Okeyla No</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.OkeylaNo</td>
+
+                                    <td> </td>
+                                    <td>Okeyla Remarks</td>
+                                    <td>:</td>
+                                    <td class="text-bold" colspan="7">@report.OkeylaRemarks</td>
+                                </tr>
+                                <tr>
+                                    <td>Musani Date</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToDateTime(report.MusaniDate).ToString("dd-MMM-yy")</td>
+                                    <td> </td>
+                                    <td>Musani Remarks</td>
+                                    <td>:</td>
+                                    <td class="text-bold" colspan="7">@report.MusaniRemarks</td>
+                               </tr>
+                              
+                              
+
+                            </table>
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="box box-default">
+                <div class="box-header ui-sortable-handle">
+                    <i class="fa  fa-info"></i>
+                    <p class="box-title text-uppercase">Finger Information</p>
+                </div>
+                <div class="box-body">
+                    <div class="col-md-12" style="padding-left: 0px">
+                        <form class="form-horizontal">
+                            <table class="table">
+                                <tr>
+                                    <td>Finger Date</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToDateTime(report.FingerDate).ToString("dd-MMM-yy")</td>
+                                    <td> </td>
+                                    <td>Status</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToString(report.FingerStatus)</td>
+                                </tr>
+
+                            </table>
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="box box-default">
+                <div class="box-header ui-sortable-handle">
+                    <i class="fa  fa-info"></i>
+                    <p class="box-title text-uppercase">Manpower Information</p>
+                </div>
+                <div class="box-body">
+                    <div class="col-md-12" style="padding-left: 0px">
+                        <form class="form-horizontal">
+                            <table class="table">
+                                <tr>
+                                    <td>Manpower Date</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToDateTime(report.ManpowerDate).ToString("dd-MMM-yy")</td>
+                                    <td> </td>
+                                    <td>Status</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.ManStatus</td>
+                                </tr>
+
+                            </table>
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="box box-default">
+                <div class="box-header ui-sortable-handle">
+                    <i class="fa  fa-info"></i>
+                    <p class="box-title text-uppercase">Fly Detials</p>
+                </div>
+                <div class="box-body">
+                    <div class="col-md-12" style="padding-left: 0px">
+                        <form class="form-horizontal">
+                            <table class="table">
+                                <tr>
+                                    <td>Flight No</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToString(report.FlighNo)</td>
+                                    <td> </td>
+                                    <td>Delevery Date</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToDateTime(report.FileDeleveryDate).ToString("dd-MMM-yy")</td>
+                                </tr>
+
+                                
+                                <tr>
+                                    <td>Fly Date</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@Convert.ToDateTime(report.FlyDate).ToString("dd-MMM-yy")</td>
+                                    <td> </td>
+                                    <td>Desitnation</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.FlyDestination</td>
+                                </tr>
+                             
+                                <tr>
+                                    <td>Tra.AG Name</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.TraAgName</td>
+                                    <td> </td>
+                                    <td>Status</td>
+                                    <td>:</td>
+                                    <td class="text-bold">@report.FlyStatus</td>
+                                </tr>
+
+                            </table>
+                        </form>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    }
+</div>
+</div>
+</div>
+
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+
+@section scripts
+{
+    <script type="text/javascript">
+        $('.select2').select2();
+        //Date picker
+        $('#ppdevdate').datepicker({
+            autoclose: true
+        });
+        $('#ppsubmitdate').datepicker({
+            autoclose: true
+        });
+        $('.modal').modal();
+        $('#example1').DataTable();
+        
+        function PrintElem(elem) {
+            //  Popup($(elem).html());
+
+            var printContents = document.getElementById(elem).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+
+        
+    </script>
+}

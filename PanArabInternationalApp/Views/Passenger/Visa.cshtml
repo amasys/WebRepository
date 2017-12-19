@@ -1,0 +1,481 @@
+﻿@{
+    ViewBag.Title = "Visa";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<link href="~/dist/css/AdminLTE.css" rel="stylesheet" />
+<link href="~/adminLite/bootstrapSwitch/bootstrap-toggle.min.css" rel="stylesheet" />
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+
+    .toggle.android {
+        border-radius: 0px;
+        height: 20px;
+    }
+
+        .toggle.android .toggle-handle {
+            border-radius: 0px;
+        }
+</style>
+@using PanArabInternationalApp.Models
+@model PanArabInternationalApp.Models.Visa
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">Visa Information</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                    </div>
+                    <div class="col-md-12">
+                        <!-- Custom Tabs -->
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Pending Visa List</a></li>
+                                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Clear Visa List</a></li>
+                                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true)
+
+                                        <div class="modal fade" id="modal-default">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4 class="modal-title">Visa Processing</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa  fa-bars"></i></span>
+                                                                        @Html.TextBoxFor(model => model.FormSl, new { @class = "form-control", placeholder = "PSL-001" })
+
+                                                                    </div>
+                                                                    @Html.ValidationMessageFor(model => model.FormSl)
+
+
+                                                                </div>
+
+                                                                <div class="form-group">
+
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-reorder (alias)"></i></span>
+
+                                                                        <select class="form-control select2" name="Category">
+                                                                            <option value="">Select Visa Category</option>
+                                                                            @foreach (SelectListItem listItem in Model.VisaCategory)
+                                                                            {
+                                                                                <option value="@listItem.Value">@listItem.Text</option>
+                                                                            }
+
+                                                                        </select>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="form-group" id="Musane" style="display: none">
+                                                                    <div class="form-group">
+
+
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-reorder (alias)"></i></span>
+
+                                                                            @Html.TextBoxFor(model => model.MusaniDate, new { @class = "form-control", placeholder = "MUSANI DATE" })
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+
+
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-reorder (alias)"></i></span>
+
+                                                                            @Html.TextBoxFor(model => model.MusaniRemarks, new { @class = "form-control", placeholder = "MUSANI REMARKS" })
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <hr class="cm-hr" />
+                                                                </div>
+                                                                <div class="form-group" id="Licence" style="display: none">
+                                                                    <div class="form-group">
+
+
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-reorder (alias)"></i></span>
+
+                                                                            @Html.TextBoxFor(model => model.ContractAmount, new { @class = "form-control", placeholder = "CONTACT AMOUNT" })
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+
+
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-reorder (alias)"></i></span>
+
+                                                                            @Html.TextBoxFor(model => model.DrivingLicenceNo, new { @class = "form-control", placeholder = "DRIVING LICENCE NO" })
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <hr class="cm-hr" />
+                                                                </div>
+                                                                <div class="form-group" id="Okalyee" style="display: block">
+
+
+
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                                            @Html.TextBoxFor(model => model.OkalyeeDate, new {@class = "form-control", placeholder = "OKEYLA DATE"})
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                                            @Html.TextBoxFor(model => model.OkelaNo, new { @class = "form-control", placeholder = "OKEYLA NO" })
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                                        @Html.TextBoxFor(model => model.OkalyeeRemarks, new { @class = "form-control", placeholder = "OKEYLA REMARKS" })
+
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </div>
+
+                                                            <div class="col-md-6">
+
+
+
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                                        @Html.TextBoxFor(model => model.VisaNo, new { @class = "form-control", placeholder = "VISA NO" })
+
+                                                                    </div>
+                                                                    @Html.ValidationMessageFor(model => model.VisaNo)
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                                        @Html.TextBoxFor(model => model.VisaReff, new { @class = "form-control", placeholder = "VISA REFF NO" })
+
+                                                                    </div>
+                                                                    @Html.ValidationMessageFor(model => model.VisaReff)
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                                        @Html.TextBoxFor(model => model.SponcerId, new { @class = "form-control", placeholder = "SPONSER ID" })
+
+                                                                    </div>
+                                                                    @Html.ValidationMessageFor(model => model.SponcerId)
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                                        @Html.TextBoxFor(model => model.SponsorName, new { @class = "form-control", placeholder = "SPONSER NAME" })
+
+                                                                    </div>
+                                                                    @Html.ValidationMessageFor(model => model.SponsorName)
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                                        @Html.TextBoxFor(model => model.IssueDate, new { @id = "issuedate", @class = "form-control", placeholder = "Issue Date" })
+
+                                                                    </div>
+                                                                    @Html.ValidationMessageFor(model => model.IssueDate)
+                                                                </div>
+
+
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                                        @Html.TextBoxFor(model => model.IssuePlace, new { @class = "form-control", placeholder = "Issue Place" })
+
+                                                                    </div>
+                                                                    @Html.ValidationMessageFor(model => model.IssuePlace)
+                                                                </div>
+
+
+                                                                <div class="form-group" id="optionnal">
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                                        @Html.TextBoxFor(model => model.VisaStapDate, new { @id = "stampdate", @class = "form-control", placeholder = "Visa Stamping date" })
+
+                                                                    </div>
+                                                                    @Html.ValidationMessageFor(model => model.VisaStapDate)
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+
+
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Form SL </th>
+                                                    <th>Passenger Name</th>
+                                                    <th>Passport No</th>
+                                                    <th>Visa Category</th>
+                                                    <th>Visa No</th>
+                                                    <th>Issue Date</th>
+                                                    <th>Issue Place</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                        foreach (var VARIABLE in (List<Visa>)ViewBag.VisaList)
+                                        {
+                                            <tr>
+                                                <td>@VARIABLE.FormSl</td>
+                                                <td>@VARIABLE.Pname</td>
+                                                <td>@VARIABLE.PassNo</td>
+                                                <td>@VARIABLE.VisaNo</td>
+
+                                                <td>@VARIABLE.Category</td>
+                                                <td>@VARIABLE.IssueDate.ToString("d")</td>
+                                                <td>@VARIABLE.IssuePlace</td>
+                                                <td><span class="label label-xs bg-primary">@VARIABLE.Status</span></td>
+                                                <td><button type="button" id="action" onclick="" class="btn btn-default btn-sm"><i class="fa fa-edit "></i></button></td>
+
+                                            </tr>
+                                        }
+                                                }
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Form SL </th>
+                                                    <th>Passenger Name</th>
+                                                    <th>Passport No</th>
+                                                    <th>Visa Category</th>
+                                                    <th>Visa No</th>
+                                                    <th>Issue Date</th>
+                                                    <th>Issue Place</th>
+                                                    <th>Status</th>
+
+                                                    <th>Action</th>
+
+
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+
+                                    }
+
+                                </div>
+                                <div class="tab-pane " id="tab_2">
+
+                                    <table id="example2" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Form SL </th>
+                                                <th>Passenger Name</th>
+                                                <th>Passport No</th>
+                                                <th>Visa Category</th>
+                                                <th>Visa No</th>
+                                                <th>Issue Date</th>
+                                                <th>Issue Place</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                foreach (var VARIABLE in (List<Visa>)ViewBag.ClearenceList)
+                                                {
+                                                    <tr>
+                                                        <td>@VARIABLE.FormSl</td>
+                                                        <td>@VARIABLE.Pname</td>
+                                                        <td>@VARIABLE.PassNo</td>
+
+                                                        <td>@VARIABLE.Category</td>
+                                                        <td>@VARIABLE.VisaNo</td>
+
+                                                        <td>@VARIABLE.IssueDate.ToString("d")</td>
+                                                        <td>@VARIABLE.IssuePlace</td>
+                                                        <td><span class="label label-xs bg-primary">@VARIABLE.Status</span></td>
+                                                        <td><button type="button" id="" onclick="location.href='@Url.Action("RetriveEditForm", "Passenger", new { formId =VARIABLE.FormSl,pageName=ViewBag.Title})'" class="btn btn-default btn-sm"><i class="fa fa-edit "></i></button></td>
+
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Form SL </th>
+                                                <th>Passenger Name</th>
+                                                <th>Passport No</th>
+                                                <th>Visa Category</th>
+                                                <th>Visa No</th>
+                                                <th>Issue Date</th>
+                                                <th>Issue Place</th>
+                                                <th>Status</th>
+
+                                                <th>Action</th>
+
+
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+
+
+
+                                </div>
+
+                                <!-- /.tab-pane -->
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
+                        <!-- nav-tabs-custom -->
+                    </div>
+                    <!-- /.col -->
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/adminLite/bootstrapSwitch/bootstrap-toggle.min.js"></script>
+
+@section scripts
+{
+
+    <script type="text/javascript">
+
+        function modal() {
+
+
+        }
+
+        //Date picker
+        $('#MusaniDate').datepicker({
+            autoclose: true,
+            format: 'dd-MM-yyyy'
+        });
+        $('#OkalyeeDate').datepicker({
+            autoclose: true,
+            format: 'dd-MM-yyyy'
+        });
+
+        $('#issuedate').datepicker({
+            autoclose: true,
+            format: 'dd-MM-yyyy'
+        });
+        $('#stampdate').datepicker({
+            autoclose: true,
+            format: 'dd-MM-yyyy'
+        });
+        $("#example1").on('click', '#action', action);
+        $('.select2').change(function () {
+            var value = $(this).val();
+
+            if (value === '0' || value === "1") {
+
+                $('#Musane').css("display", "block");
+                $('#Licence').css("display", "none");
+
+            } else if (value === '2') {
+                $('#Musane').css("display", "block");
+                $('#Licence').css("display", "block");
+            } else {
+                $('#Musane').css("display", "none");
+                $('#Licence').css("display", "none");
+            }
+
+        });
+
+        function action() {
+
+            $('#modal-default').modal();
+            var table = $('#example1').DataTable();
+
+            var index = $(this).closest('td').parent()[0].sectionRowIndex;
+
+            //var data = table.row(index).data();
+
+
+            var FormSl = table.cell(index, 0).data();
+
+            $('#FormSl').val(FormSl);
+
+        };
+
+        $('#example1').DataTable();
+        $('#example2').DataTable();
+    </script>
+
+}
+
+

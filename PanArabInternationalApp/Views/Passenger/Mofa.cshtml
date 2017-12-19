@@ -1,0 +1,277 @@
+﻿@using PanArabInternationalApp.Models
+@{
+    ViewBag.Title = "Mofa";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<link href="~/dist/css/AdminLTE.css" rel="stylesheet" />
+<link href="~/adminLite/bootstrapSwitch/bootstrap-toggle.min.css" rel="stylesheet" />
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+
+    .toggle.android {
+        border-radius: 0px;
+        height: 20px;
+    }
+
+        .toggle.android .toggle-handle {
+            border-radius: 0px;
+        }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">Mofa Information</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                    </div>
+                    <div class="col-md-12">
+                        <!-- Custom Tabs -->
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Pending Mofa</a></li>
+                                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Clearence Mofa List</a></li>
+                                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true)
+
+
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Form SL </th>
+                                                    <th>Passenger Name</th>
+                                                    <th>Passport No</th>
+                                                    <th>Mofa No</th>
+
+                                                    <th>Mofa Enroll Date </th>
+                                                    <th>Action</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                        foreach (var VARIABLE in (List<Mofa>)ViewBag.Mofalist)
+                                        {
+                                            <tr>
+                                                <td>@VARIABLE.Formsl</td>
+                                                <td>@VARIABLE.PName</td>
+                                                <td>@VARIABLE.PassNo</td>
+
+                                                <td><input type="text" value="@VARIABLE.MofaNumber" id="mofaNo" class="form-control" placeholder="Mofa Number" /></td>
+                                                @{
+
+                                            if (VARIABLE.MofaDate == Convert.ToDateTime("1/1/0001 12:00:00 AM"))
+                                            {
+
+                                                <td><input type="text" id="mofaDate" class="form-control date" placeholder="Mofa Date" /></td>
+
+                                            }
+                                            else
+                                            {
+
+                                                <td><input type="text" id="mofaDate" value="@VARIABLE.MofaDate.ToString("d")" class="form-control date" placeholder="Mofa Date" /></td>
+                                            }
+
+                                                }
+                                                <td>
+
+                                                    <button type="button" id="action" class="btn btn-default btn-sm"><i class="fa fa-edit "></i></button>
+
+                                                </td>
+                                            </tr>
+                                        }
+                                                }
+
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Form SL </th>
+                                                    <th>Passenger Name</th>
+                                                    <th>Passport No</th>
+                                                    <th>Mofa No</th>
+
+                                                    <th>Mofa Enroll Date </th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+
+                                    }
+
+                                </div>
+
+                                <div class="tab-pane" id="tab_2">
+                                    <table id="example2" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Form SL </th>
+                                                <th>Passenger Name</th>
+                                                <th>Passport No</th>
+                                                <th>Mofa No</th>
+
+                                                <th>Mofa Enroll Date </th>
+                                                <th>Action</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                foreach (var VARIABLE in (List<Mofa>)ViewBag.ClearenceList)
+                                                {
+                                                    <tr>
+                                                        <td>@VARIABLE.Formsl</td>
+                                                        <td>@VARIABLE.PName</td>
+                                                        <td>@VARIABLE.PassNo</td>
+
+                                                        <td>@VARIABLE.MofaNumber</td>
+                                                        @{
+
+                                                            <td>@VARIABLE.MofaDate.ToString("d")</td>
+                                                        }
+
+                                                        
+                                                        <td>
+
+                                                            <button type="button" id="" class="btn btn-default btn-sm"><i class="fa fa-edit "></i></button>
+
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Form SL </th>
+                                                <th>Passenger Name</th>
+                                                <th>Passport No</th>
+                                                <th>Mofa No</th>
+
+                                                <th>Mofa Enroll Date </th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+
+
+                                </div>
+                                <!-- /.tab-pane -->
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
+                        <!-- nav-tabs-custom -->
+                    </div>
+                    <!-- /.col -->
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/adminLite/bootstrapSwitch/bootstrap-toggle.min.js"></script>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        //Date picker
+        $('.date').datepicker({
+            autoclose: true
+        });
+
+        $("#example1").on('click', '#action', action);
+
+
+        function action() {
+            var table = $('#example1').DataTable();
+
+            var index = $(this).closest('td').parent()[0].sectionRowIndex;
+
+            //var data = table.row(index).data();
+
+
+            var FormSl = table.cell(index, 0).data();
+            var PName = table.cell(index, 1).data();
+            var PassNo = table.cell(index, 2).data();
+            var MofaNumber = table.cell(index, 3).nodes().to$().find('input').val();
+            var MofaDate = table.cell(index, 4).nodes().to$().find('input').val();
+
+
+            var value = {
+                Formsl: FormSl,
+                PName: PName,
+                PassNo: PassNo,
+                MofaDate: MofaDate,
+                MofaNumber: MofaNumber
+
+            }
+
+            if (value.MedicalDate === '') {
+                alert('Please Select Medical Date');
+                return;
+            }
+
+            if (value.Remarks === '') {
+                alert('Please Medical Remarks');
+                return;
+            }
+
+            if (value.MedicalExpDate === '') {
+                alert('Please Select Medical Exp.Date');
+                return;
+            }
+
+
+            $.ajax({
+                type: "POST",
+                url: '/Passenger/Mofa',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(value),
+                success: function (data) {
+
+                    alert(data);
+
+                    var url = '@Url.Action("Mofa", "Passenger")';
+                    window.location.href = url;
+                }
+            });
+        }
+
+        $('#example1').DataTable();
+        $('#example2').DataTable();
+    </script>
+}

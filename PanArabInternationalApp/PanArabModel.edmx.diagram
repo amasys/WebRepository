@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac5ed80f5e1d43318db1a147f150c3f5" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_FlyDetails" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Manpower" Width="1.5" PointX="3.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Mofa" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_UserCreate" Width="1.5" PointX="5.5" PointY="4.625" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_VisaProcessing" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Disctrict" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.ViewGetAllPassenger" Width="3.5" PointX="10.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Medical" Width="1.5" PointX="4.25" PointY="7.375" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Passport" Width="1.5" PointX="6" PointY="6.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Finger" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_JournelMaster" Width="1.5" PointX="2.75" PointY="7.125" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_AccountLedger" Width="1.5" PointX="2.375" PointY="3.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_PC_ConsoleLetter" Width="1.5" PointX="7.375" PointY="9.875" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Passenger" Width="1.5" PointX="9" PointY="7.5" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.viewExistPcClearence" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.viewExistPassportSlNo" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

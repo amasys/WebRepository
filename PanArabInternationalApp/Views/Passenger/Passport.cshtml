@@ -1,0 +1,294 @@
+﻿@{
+    ViewBag.Title = "Passport";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@using PanArabInternationalApp.Models
+@model PanArabInternationalApp.Models.Passport
+
+<link href="~/dist/css/AdminLTE.css" rel="stylesheet" />
+
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+</style>
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Passport Information</h3>
+
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                        </div>
+                        <div class="col-md-12">
+                            <!-- Custom Tabs -->
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Passport Entry </a></li>
+                                    <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Details</a></li>
+                                    <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                        @using (Html.BeginForm())
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.ValidationSummary(true)
+                                            <div class="col-md-12">
+                                                @if (ViewBag.Message != null)
+                                                {
+                                                    <div class="modal fade" id="modal-default">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                    <h4 class="modal-title">Message</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>@ViewBag.Message</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
+                                                }
+
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa  fa-bars"></i></span>
+
+                                                        <select class="form-control select2" name="Formsl" placeholder="Select Passenger">
+                                                            <option value="">Select Passenger</option>
+                                                            @foreach (var value in ViewBag.ListPassport)
+                                                            {
+
+                                                                <option value="@value">@value</option>
+
+                                                            }
+
+                                                        </select>
+                                                        @Html.ValidationMessageFor(model => model.Formsl)
+
+                                                    </div>
+
+
+
+                                                </div>
+                                                <div class="form-group" id="slipDiv">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                        @Html.TextBoxFor(model => model.Pslipno, new { @class = "form-control", placeholder = "SLIP NO" })
+
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.Pslipno)
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                        @Html.TextBoxFor(model => model.PassNo, new { @class = "form-control", placeholder = "PASSPORT NO" })
+
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.PassNo)
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-male"></i></span>
+                                                        @Html.TextBoxFor(model => model.PpMakeBy, new {@class = "form-control", placeholder = "PASSPORT MAKE BY",@readonly="readonly"})
+
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.PpMakeBy)
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        @Html.TextBoxFor(model => model.PassportExpireDate, new { @class = "form-control", placeholder = "PASSPORT EXPIRE DATE", @id = "ppExpireDate" })
+
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.PassportExpireDate)
+                                                </div>
+                                                <div class="form-group" id="DeleveryDate">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        @Html.TextBoxFor(model => model.PpDeleveryDate, new { @class = "form-control", placeholder = "PASSPORT DELEVERY DATE", @id = "ppdevdate" })
+
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.PpDeleveryDate)
+                                                </div>
+                                                  <div class="form-group">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        @Html.TextBoxFor(model => model.PsubmitDate, new { @class = "form-control", placeholder = "PASSPORT SUBMIT DATE", @id = "ppsubmitdate" })
+
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.PsubmitDate)
+                                                </div>
+                                              
+                                             
+                                                <div class="form-group">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-sticky-note"></i></span>
+                                                        @Html.TextAreaFor(model => model.Remarks, new { @class = "form-control", placeholder = "Remarks", @id = "remarks" })
+
+                                                    </div>
+                                                    @Html.ValidationMessageFor(model => model.Remarks)
+                                                </div>
+
+
+
+
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="box-footer">
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        }
+
+                                    </div>
+                                    <!-- /.tab-pane -->
+                                    <div class="tab-pane" id="tab_2">
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>SL NO</th>
+                                                    <th>PassportNo</th>
+                                                    <th>SlipNo</th>
+                                                    <th>Submit Date</th>
+                                                    <th>Delevery Date</th>
+                                                    <th>Remarks</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach (var value in (List<Passport>)ViewBag.PList)
+                                                {
+                                                    <tr>
+                                                        <td>@value.Formsl</td>
+                                                        <td>@value.PassNo</td>
+                                                        <td>@value.Pslipno</td>
+                                                        <td>@value.PsubmitDate.ToShortDateString()</td>
+                                                        <td>@value.PpDeleveryDate</td>
+                                                        <td>@value.Remarks</td>
+                                                        <td><button type="button" class="btn btn-default btn-sm"><i class="fa fa-edit "></i></button></td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+
+                                                    <th>SL NO</th>
+                                                    <th>PassportNo</th>
+                                                    <th>Submit Date</th>
+                                                    <th>Delevery Date</th>
+                                                    <th>Remarks</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+                                </div>
+                                <!-- /.tab-content -->
+                            </div>
+                            <!-- nav-tabs-custom -->
+                        </div>
+                        <!-- /.col -->
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+
+
+
+<script src="~/Scripts/jquery-1.8.2.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+
+@section scripts
+{
+    <script type="text/javascript">
+        $('.select2').select2();
+        //Date picker
+        $('#ppdevdate').datepicker({
+            autoclose: true
+        });
+        $('#ppsubmitdate').datepicker({
+            autoclose: true
+        });
+        $('#ppExpireDate').datepicker({
+            autoclose: true
+        });
+        $('.modal').modal();
+
+        $('.select2').on('change', function () {
+            var slNo = this.value;
+
+          //  alert(slNo);
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                cache: false,
+                url: "/Passenger/GetPassportInfo",
+                data: { pid: slNo },
+                success: function (result) {
+                    if (result === true) {
+                        $('#slipDiv').hide();
+                        $('#PpMakeBy').val('Passenger Cost');
+                        $('#DeleveryDate').hide();
+
+                    } else {
+                        $('#slipDiv').show();
+                        $('#PpMakeBy').val('Office Cost Cost');
+                        $('#DeleveryDate').show();
+                    }
+                    //$('#PName').val(result.PName);
+                    //$('#PassportNo').val(result.PassNo);
+                    
+                },
+                error: function (textStatus, errorThrown) {
+                    alert('Error - ' + errorThrown);
+                }
+            });
+        });
+        $('#example1').DataTable();
+    </script>
+}
