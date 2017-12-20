@@ -27,5 +27,7 @@ namespace PanArabInternationalApp.Models
         public string Remarks { get; set; }
 
         public string MedicalContactAmount { get; set; }
+
+        public int VoucherNo { get; set; }
     }
 }

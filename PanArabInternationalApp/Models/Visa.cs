@@ -36,5 +36,7 @@ namespace PanArabInternationalApp.Models
         public string ContractAmount { get; set; }
         public string DrivingLicenceNo { get; set; }
         public String OkelaNo { get; set; }
+
+        public int VoucherNo { get; set; }
     }
 }

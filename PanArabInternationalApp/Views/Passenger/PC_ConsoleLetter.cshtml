@@ -365,7 +365,10 @@
                     $('#PassportNo').val(result.PassportNo);
                     $('#PcContactAmmount').val(result.PcContactAmmount);
                 
-                    if()
+                    if (result.PcContactAmmount > 0) {
+                        $('#optionnal').css("display", "block");
+                        $('#byAgency').prop('checked', true);
+                    }
 
 
                         

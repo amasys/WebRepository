@@ -70,5 +70,8 @@ namespace PanArabInternationalApp.Models
          public bool IsPassport { get; set; }
 
          public List<SelectListItem> ListDistrict { get; set; }
+
+
+         public Medical Medical { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -170,6 +171,8 @@ namespace PanArabInternationalApp.DataAccess.DAL
 
                 if (count > 0)
                 {
+                    VisaUpdate(visa);
+
                     return true;
                 }
             }
@@ -241,6 +244,13 @@ namespace PanArabInternationalApp.DataAccess.DAL
             }
             return new List<Visa>().ToList();
         }
+
+        public void VisaUpdate(Visa visa)
+        {
+            
+        }
+
+
         public List<SelectListItem> GetAllVisaCate()
         {
             List<SelectListItem> ListOfVisa = new List<SelectListItem>();

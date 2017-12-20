@@ -67,10 +67,7 @@ namespace PanArabInternationalApp.DataAccess.Bll.Manager
 
         public ActionResult EditMangerRoute(string formId, string pageName)
         {
-
-
-
-
+            
             return GetRoute(formId,pageName);
         }
 

@@ -16,7 +16,7 @@ namespace PanArabInternationalApp.DataAccess.Bll.Manager
             {
                 if (IsExist(visa))
                 {
-                    return "This Visa Already Ready";
+                    return "This Visa is Updated ";
                 }
                 else
                 {

@@ -155,7 +155,7 @@ namespace PanArabInternationalApp.DataAccess.DAL
                 // string masterLedgr = DbEntities.tbl_AccountLedger.Max(a =>a.ledgerId);
 
                 int jdetailscr = DbEntities.JournelDetailsAddPassenger(journalMaxId.ToString(), Convert.ToDecimal(passenger.ContractAmmount), Convert.ToDecimal(0.00), "", "", "");
-                jdetailsdr = DbEntities.JournelDetailsAdd(journalMaxId.ToString(), "45", Convert.ToDecimal(0.00), Convert.ToDecimal(passenger.ContractAmmount), "", "", "");
+                jdetailsdr = DbEntities.JournelDetailsAdd(journalMaxId.ToString(), "30", Convert.ToDecimal(0.00), Convert.ToDecimal(passenger.ContractAmmount), "", "", "");
 
                 DbEntities.SaveChanges();
 
@@ -175,7 +175,7 @@ namespace PanArabInternationalApp.DataAccess.DAL
             //changing 45 
             try
             {
-                DbEntities.LedgerPostingAdd(DateTime.Today, "Journal Voucher", masterJournalId, masterLedgr, Convert.ToDecimal(passenger.ContractAmmount), Convert.ToDecimal(0.0), false, "1", "45", null);
+                DbEntities.LedgerPostingAdd(DateTime.Today, "Journal Voucher", masterJournalId, masterLedgr, Convert.ToDecimal(passenger.ContractAmmount), Convert.ToDecimal(0.0), false, "1", "30", null);
 
             }
             catch (Exception ex)
@@ -191,7 +191,7 @@ namespace PanArabInternationalApp.DataAccess.DAL
             //changing 45 
             try
             {
-                DbEntities.LedgerPostingAdd(DateTime.Today, "Journal Voucher", masterJournalId, "45", Convert.ToDecimal(0.0), Convert.ToDecimal(passenger.ContractAmmount), false, "1", masterLedgr, null);
+                DbEntities.LedgerPostingAdd(DateTime.Today, "Journal Voucher", masterJournalId, "30", Convert.ToDecimal(0.0), Convert.ToDecimal(passenger.ContractAmmount), false, "1", masterLedgr, null);
 
 
             }

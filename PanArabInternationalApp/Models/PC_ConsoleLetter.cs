@@ -27,6 +27,9 @@ namespace PanArabInternationalApp.Models
         [Required]
         public string Remarks { get; set; }
 
+
+        public int VoucherNo { get; set; }
+
        
 
 

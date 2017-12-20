@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using PanArabInternationalApp.DataAccess.DAL;
+using PanArabInternationalApp.EmailConfig;
 using PanArabInternationalApp.Models;
 
 namespace PanArabInternationalApp.DataAccess.Bll.Manager
@@ -22,7 +23,8 @@ namespace PanArabInternationalApp.DataAccess.Bll.Manager
             {
                 if (IsExist(medical))
                 {
-                    return "This Passenger Medical Already Submitted";
+                   
+                    return "This Passenger Medical Updated";
                 }
                 else
                 {
@@ -49,6 +51,29 @@ namespace PanArabInternationalApp.DataAccess.Bll.Manager
            
         }
 
+        public void Update(Passenger passenger)
+        {
+            try
+            {
+                tbl_Medical passengerList = DbEntities.tbl_Medical.SingleOrDefault(a => a.FormSl == passenger.Medical.Formsl);
+
+                if (passengerList != null)
+                {
+
+                    passengerList.MedicalContactAmount = Convert.ToInt32(passenger.Medical.MedicalContactAmount);
+                    passengerList.MedicalReport = passenger.Medical.MedicalReport;
+                    DbEntities.SaveChanges();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                new CustomizeMessageSentToEmail().SentMail(ex);
+            }
+
+        }
      
     }
 }

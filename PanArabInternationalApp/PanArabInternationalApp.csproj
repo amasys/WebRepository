@@ -134,6 +134,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PassengerController.cs" />
+    <Compile Include="DataAccess\Bll\Manager\AccountingManager.cs" />
     <Compile Include="DataAccess\Bll\Manager\EditManager.cs" />
     <Compile Include="DataAccess\Bll\Manager\FingerManager.cs" />
     <Compile Include="DataAccess\Bll\Manager\FlyManager.cs" />
