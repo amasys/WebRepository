@@ -33,5 +33,6 @@ namespace PanArabInternationalApp
         public string SponserId { get; set; }
         public string SponcerName { get; set; }
         public string VisaReffNo { get; set; }
+        public string voucherno { get; set; }
     }
 }

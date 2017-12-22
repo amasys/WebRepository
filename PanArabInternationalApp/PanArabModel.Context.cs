@@ -44,6 +44,180 @@ namespace PanArabInternationalApp
         public DbSet<tbl_Passenger> tbl_Passenger { get; set; }
         public DbSet<viewExistPcClearence> viewExistPcClearences { get; set; }
         public DbSet<viewExistPassportSlNo> viewExistPassportSlNoes { get; set; }
+        public DbSet<tbl_Temps> tbl_Temps { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
+        public DbSet<tbl_AccountGroup> tbl_AccountGroup { get; set; }
+        public DbSet<tbl_AccountGroupToCopy> tbl_AccountGroupToCopy { get; set; }
+        public DbSet<tbl_AccountLedgerToCopy> tbl_AccountLedgerToCopy { get; set; }
+        public DbSet<tbl_AccoutnsLdegerSL> tbl_AccoutnsLdegerSL { get; set; }
+        public DbSet<tbl_AdditionalCost> tbl_AdditionalCost { get; set; }
+        public DbSet<tbl_AdvancePayment> tbl_AdvancePayment { get; set; }
+        public DbSet<tbl_Agency> tbl_Agency { get; set; }
+        public DbSet<tbl_AirlinesOrShipping> tbl_AirlinesOrShipping { get; set; }
+        public DbSet<tbl_Area> tbl_Area { get; set; }
+        public DbSet<tbl_AttendanceDetails> tbl_AttendanceDetails { get; set; }
+        public DbSet<tbl_AttendanceMaster> tbl_AttendanceMaster { get; set; }
+        public DbSet<tbl_BankReconciliation> tbl_BankReconciliation { get; set; }
+        public DbSet<tbl_BarcodeSettings> tbl_BarcodeSettings { get; set; }
+        public DbSet<tbl_Batch> tbl_Batch { get; set; }
+        public DbSet<tbl_BOM> tbl_BOM { get; set; }
+        public DbSet<tbl_BonusDeductionDetails> tbl_BonusDeductionDetails { get; set; }
+        public DbSet<tbl_BonusDeductionMaster> tbl_BonusDeductionMaster { get; set; }
+        public DbSet<tbl_Branch> tbl_Branch { get; set; }
+        public DbSet<tbl_Brand> tbl_Brand { get; set; }
+        public DbSet<tbl_BudgetAllocation> tbl_BudgetAllocation { get; set; }
+        public DbSet<tbl_BudgetMaster> tbl_BudgetMaster { get; set; }
+        public DbSet<tbl_BudgetPeriod> tbl_BudgetPeriod { get; set; }
+        public DbSet<tbl_Company> tbl_Company { get; set; }
+        public DbSet<tbl_CompanyPath> tbl_CompanyPath { get; set; }
+        public DbSet<tbl_ComponentsSettings> tbl_ComponentsSettings { get; set; }
+        public DbSet<tbl_Consignee> tbl_Consignee { get; set; }
+        public DbSet<tbl_ContraDetails> tbl_ContraDetails { get; set; }
+        public DbSet<tbl_ContraMaster> tbl_ContraMaster { get; set; }
+        public DbSet<tbl_Counter> tbl_Counter { get; set; }
+        public DbSet<tbl_CounterSaleDetails1> tbl_CounterSaleDetails1 { get; set; }
+        public DbSet<tbl_CounterSaleMaster> tbl_CounterSaleMaster { get; set; }
+        public DbSet<tbl_Currency> tbl_Currency { get; set; }
+        public DbSet<tbl_CurrencyConversion> tbl_CurrencyConversion { get; set; }
+        public DbSet<tbl_CurrencyToCopy> tbl_CurrencyToCopy { get; set; }
+        public DbSet<tbl_DamagelStockMaster> tbl_DamagelStockMaster { get; set; }
+        public DbSet<tbl_DamageStockDetails1> tbl_DamageStockDetails1 { get; set; }
+        public DbSet<tbl_DamageStockDetails2> tbl_DamageStockDetails2 { get; set; }
+        public DbSet<tbl_DebitNoteDetails> tbl_DebitNoteDetails { get; set; }
+        public DbSet<tbl_DebitNoteMaster> tbl_DebitNoteMaster { get; set; }
+        public DbSet<tbl_DeleteStatus> tbl_DeleteStatus { get; set; }
+        public DbSet<tbl_DeliveryNoteDetails1> tbl_DeliveryNoteDetails1 { get; set; }
+        public DbSet<tbl_DeliveryNoteDetails2> tbl_DeliveryNoteDetails2 { get; set; }
+        public DbSet<tbl_DeliveryNoteMaster> tbl_DeliveryNoteMaster { get; set; }
+        public DbSet<tbl_Designation> tbl_Designation { get; set; }
+        public DbSet<tbl_Destination> tbl_Destination { get; set; }
+        public DbSet<tbl_Details> tbl_Details { get; set; }
+        public DbSet<tbl_DetailsCopy> tbl_DetailsCopy { get; set; }
+        public DbSet<tbl_DotMatrixSettings> tbl_DotMatrixSettings { get; set; }
+        public DbSet<tbl_DotMatrixSettingsToCopy> tbl_DotMatrixSettingsToCopy { get; set; }
+        public DbSet<tbl_Employee> tbl_Employee { get; set; }
+        public DbSet<tbl_ExitPoint> tbl_ExitPoint { get; set; }
+        public DbSet<tbl_Fields> tbl_Fields { get; set; }
+        public DbSet<tbl_FieldsCopy> tbl_FieldsCopy { get; set; }
+        public DbSet<tbl_FinancialYear> tbl_FinancialYear { get; set; }
+        public DbSet<tbl_Form> tbl_Form { get; set; }
+        public DbSet<tbl_FormCopy> tbl_FormCopy { get; set; }
+        public DbSet<tbl_GatePass> tbl_GatePass { get; set; }
+        public DbSet<tbl_Godown> tbl_Godown { get; set; }
+        public DbSet<tbl_Holiday> tbl_Holiday { get; set; }
+        public DbSet<tbl_IntrestParameterDetails> tbl_IntrestParameterDetails { get; set; }
+        public DbSet<tbl_IntrestParameterSettings> tbl_IntrestParameterSettings { get; set; }
+        public DbSet<tbl_IntrestPayable> tbl_IntrestPayable { get; set; }
+        public DbSet<tbl_IntrestPayableDetails> tbl_IntrestPayableDetails { get; set; }
+        public DbSet<tbl_IntrestReceivable> tbl_IntrestReceivable { get; set; }
+        public DbSet<tbl_IntrestReceivableDetails> tbl_IntrestReceivableDetails { get; set; }
+        public DbSet<tbl_InvoiceDeclaration> tbl_InvoiceDeclaration { get; set; }
+        public DbSet<tbl_Job> tbl_Job { get; set; }
+        public DbSet<tbl_JobInvoice> tbl_JobInvoice { get; set; }
+        public DbSet<tbl_JobType> tbl_JobType { get; set; }
+        public DbSet<tbl_JobTypeToCopy> tbl_JobTypeToCopy { get; set; }
+        public DbSet<tbl_JournelDetails> tbl_JournelDetails { get; set; }
+        public DbSet<tbl_LedgerPosting> tbl_LedgerPosting { get; set; }
+        public DbSet<tbl_ManufacturingJounralDetails2> tbl_ManufacturingJounralDetails2 { get; set; }
+        public DbSet<tbl_ManufacturingJournalDetails> tbl_ManufacturingJournalDetails { get; set; }
+        public DbSet<tbl_ManufacturingJournalMaster> tbl_ManufacturingJournalMaster { get; set; }
+        public DbSet<tbl_Market> tbl_Market { get; set; }
+        public DbSet<tbl_Master> tbl_Master { get; set; }
+        public DbSet<tbl_MasterCopy> tbl_MasterCopy { get; set; }
+        public DbSet<tbl_MaterialReceiptDetails1> tbl_MaterialReceiptDetails1 { get; set; }
+        public DbSet<tbl_MaterialReceiptDetails2> tbl_MaterialReceiptDetails2 { get; set; }
+        public DbSet<tbl_MaterialReceiptMaster> tbl_MaterialReceiptMaster { get; set; }
+        public DbSet<tbl_Origin> tbl_Origin { get; set; }
+        public DbSet<tbl_PackageSale> tbl_PackageSale { get; set; }
+        public DbSet<tbl_PartyBalance> tbl_PartyBalance { get; set; }
+        public DbSet<tbl_Payhead> tbl_Payhead { get; set; }
+        public DbSet<tbl_PaymentDetails> tbl_PaymentDetails { get; set; }
+        public DbSet<tbl_PaymentMaster> tbl_PaymentMaster { get; set; }
+        public DbSet<tbl_PDCPayable> tbl_PDCPayable { get; set; }
+        public DbSet<tbl_PDCReceivable> tbl_PDCReceivable { get; set; }
+        public DbSet<tbl_PhysicalStockDetails1> tbl_PhysicalStockDetails1 { get; set; }
+        public DbSet<tbl_PhysicalStockDetails2> tbl_PhysicalStockDetails2 { get; set; }
+        public DbSet<tbl_PhysicalStockMaster> tbl_PhysicalStockMaster { get; set; }
+        public DbSet<tbl_PriceList> tbl_PriceList { get; set; }
+        public DbSet<tbl_PricingLevel> tbl_PricingLevel { get; set; }
+        public DbSet<tbl_Privilege> tbl_Privilege { get; set; }
+        public DbSet<tbl_PrivilegeDetails> tbl_PrivilegeDetails { get; set; }
+        public DbSet<tbl_Product> tbl_Product { get; set; }
+        public DbSet<tbl_ProductDetails> tbl_ProductDetails { get; set; }
+        public DbSet<tbl_ProductGroup> tbl_ProductGroup { get; set; }
+        public DbSet<tbl_PurchaseDetails1> tbl_PurchaseDetails1 { get; set; }
+        public DbSet<tbl_PurchaseDetails2> tbl_PurchaseDetails2 { get; set; }
+        public DbSet<tbl_PurchaseMaster> tbl_PurchaseMaster { get; set; }
+        public DbSet<tbl_PurchaseOrderDetails1> tbl_PurchaseOrderDetails1 { get; set; }
+        public DbSet<tbl_PurchaseOrderMaster> tbl_PurchaseOrderMaster { get; set; }
+        public DbSet<tbl_PurchaseReturnDetails1> tbl_PurchaseReturnDetails1 { get; set; }
+        public DbSet<tbl_PurchaseReturnDetails2> tbl_PurchaseReturnDetails2 { get; set; }
+        public DbSet<tbl_PurchaseReturnMaster> tbl_PurchaseReturnMaster { get; set; }
+        public DbSet<tbl_QuickLaunch> tbl_QuickLaunch { get; set; }
+        public DbSet<tbl_QuickLaunchItems> tbl_QuickLaunchItems { get; set; }
+        public DbSet<tbl_QuickLaunchItemsToCopy> tbl_QuickLaunchItemsToCopy { get; set; }
+        public DbSet<tbl_Quotation> tbl_Quotation { get; set; }
+        public DbSet<tbl_QuotationDetails> tbl_QuotationDetails { get; set; }
+        public DbSet<tbl_QuotationMaster> tbl_QuotationMaster { get; set; }
+        public DbSet<tbl_Rack> tbl_Rack { get; set; }
+        public DbSet<tbl_ReceiptDetails> tbl_ReceiptDetails { get; set; }
+        public DbSet<tbl_ReceiptMaster> tbl_ReceiptMaster { get; set; }
+        public DbSet<tbl_RejectionInDetails1> tbl_RejectionInDetails1 { get; set; }
+        public DbSet<tbl_RejectionInDetails2> tbl_RejectionInDetails2 { get; set; }
+        public DbSet<tbl_RejectionInMaster> tbl_RejectionInMaster { get; set; }
+        public DbSet<tbl_RejectionOutDetails1> tbl_RejectionOutDetails1 { get; set; }
+        public DbSet<tbl_RejectionOutDetails2> tbl_RejectionOutDetails2 { get; set; }
+        public DbSet<tbl_RejectionOutMaster> tbl_RejectionOutMaster { get; set; }
+        public DbSet<tbl_Reminder> tbl_Reminder { get; set; }
+        public DbSet<tbl_Route> tbl_Route { get; set; }
+        public DbSet<tbl_SalaryDetails1> tbl_SalaryDetails1 { get; set; }
+        public DbSet<tbl_SalaryDetails2> tbl_SalaryDetails2 { get; set; }
+        public DbSet<tbl_SalaryMaster> tbl_SalaryMaster { get; set; }
+        public DbSet<tbl_SalarySettings> tbl_SalarySettings { get; set; }
+        public DbSet<tbl_SalarySettingsDetails> tbl_SalarySettingsDetails { get; set; }
+        public DbSet<tbl_SalesDetails1> tbl_SalesDetails1 { get; set; }
+        public DbSet<tbl_SalesDetails2> tbl_SalesDetails2 { get; set; }
+        public DbSet<tbl_SalesMaster> tbl_SalesMaster { get; set; }
+        public DbSet<tbl_SalesOrderDetails1> tbl_SalesOrderDetails1 { get; set; }
+        public DbSet<tbl_SalesOrderMaster> tbl_SalesOrderMaster { get; set; }
+        public DbSet<tbl_SalesPromotionDetails1> tbl_SalesPromotionDetails1 { get; set; }
+        public DbSet<tbl_SalesPromotionDetails2> tbl_SalesPromotionDetails2 { get; set; }
+        public DbSet<tbl_SalesPromotionMaster> tbl_SalesPromotionMaster { get; set; }
+        public DbSet<tbl_SalesPromotionStatus> tbl_SalesPromotionStatus { get; set; }
+        public DbSet<tbl_SalesReturnDetails1> tbl_SalesReturnDetails1 { get; set; }
+        public DbSet<tbl_SalesReturnDetails2> tbl_SalesReturnDetails2 { get; set; }
+        public DbSet<tbl_SalesReturnMaster> tbl_SalesReturnMaster { get; set; }
+        public DbSet<tbl_Service> tbl_Service { get; set; }
+        public DbSet<tbl_ServiceDetails> tbl_ServiceDetails { get; set; }
+        public DbSet<tbl_ServiceMaster> tbl_ServiceMaster { get; set; }
+        public DbSet<tbl_Settings> tbl_Settings { get; set; }
+        public DbSet<tbl_Shipper> tbl_Shipper { get; set; }
+        public DbSet<tbl_StandardRate> tbl_StandardRate { get; set; }
+        public DbSet<tbl_StockPosting> tbl_StockPosting { get; set; }
+        public DbSet<tbl_SuffixPrefix> tbl_SuffixPrefix { get; set; }
+        public DbSet<tbl_TailoringDetails> tbl_TailoringDetails { get; set; }
+        public DbSet<tbl_TailoringMaster> tbl_TailoringMaster { get; set; }
+        public DbSet<tbl_TailoringPayment> tbl_TailoringPayment { get; set; }
+        public DbSet<tbl_TaxDetails> tbl_TaxDetails { get; set; }
+        public DbSet<tbl_TaxDetailsToCopy> tbl_TaxDetailsToCopy { get; set; }
+        public DbSet<tbl_TaxMaster> tbl_TaxMaster { get; set; }
+        public DbSet<tbl_TaxMasterToCopy> tbl_TaxMasterToCopy { get; set; }
+        public DbSet<tbl_Temps1> tbl_Temps1 { get; set; }
+        public DbSet<tbl_TransferDetails> tbl_TransferDetails { get; set; }
+        public DbSet<tbl_TransferMaster> tbl_TransferMaster { get; set; }
+        public DbSet<tbl_Unit> tbl_Unit { get; set; }
+        public DbSet<tbl_UnitConversion> tbl_UnitConversion { get; set; }
+        public DbSet<tbl_UpdationStatus> tbl_UpdationStatus { get; set; }
+        public DbSet<tbl_UsedStockDetails1> tbl_UsedStockDetails1 { get; set; }
+        public DbSet<tbl_UsedStockDetails2> tbl_UsedStockDetails2 { get; set; }
+        public DbSet<tbl_UsedStockMaster> tbl_UsedStockMaster { get; set; }
+        public DbSet<tbl_User> tbl_User { get; set; }
+        public DbSet<tbl_VatJournalDetails> tbl_VatJournalDetails { get; set; }
+        public DbSet<tbl_VatJournalMaster> tbl_VatJournalMaster { get; set; }
+        public DbSet<tbl_VehicleType> tbl_VehicleType { get; set; }
+        public DbSet<ViewCashBank> ViewCashBanks { get; set; }
+        public DbSet<ViewParty> ViewParties { get; set; }
+        public DbSet<vwCashInHandLedger> vwCashInHandLedgers { get; set; }
     
         public virtual ObjectResult<SpPassport_Result> SpPassport()
         {
@@ -380,6 +554,31 @@ namespace PanArabInternationalApp
         public virtual ObjectResult<sp_ConsoleLetter_Result> sp_ConsoleLetter()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ConsoleLetter_Result>("sp_ConsoleLetter");
+        }
+    
+        public virtual int Sp_LedgerAndJournalPostingUpdateDrCr(string voucherNo, string debit, string credit, string checkedDrCr, string query)
+        {
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            var debitParameter = debit != null ?
+                new ObjectParameter("debit", debit) :
+                new ObjectParameter("debit", typeof(string));
+    
+            var creditParameter = credit != null ?
+                new ObjectParameter("credit", credit) :
+                new ObjectParameter("credit", typeof(string));
+    
+            var checkedDrCrParameter = checkedDrCr != null ?
+                new ObjectParameter("checkedDrCr", checkedDrCr) :
+                new ObjectParameter("checkedDrCr", typeof(string));
+    
+            var queryParameter = query != null ?
+                new ObjectParameter("query", query) :
+                new ObjectParameter("query", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Sp_LedgerAndJournalPostingUpdateDrCr", voucherNoParameter, debitParameter, creditParameter, checkedDrCrParameter, queryParameter);
         }
     }
 }

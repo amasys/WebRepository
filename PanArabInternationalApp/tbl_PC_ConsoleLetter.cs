@@ -23,5 +23,6 @@ namespace PanArabInternationalApp
         public string UploadName { get; set; }
         public string ByOwnRemarks { get; set; }
         public string ControlLetterRemarks { get; set; }
+        public string voucherno { get; set; }
     }
 }

@@ -73,5 +73,9 @@ namespace PanArabInternationalApp.Models
 
 
          public Medical Medical { get; set; }
+         public PC_ConsoleLetter pcConsoleLetter { get; set; }
+         public Visa visa { get; set; }
+
+         public int voucherno { get; set; }
     }
 }

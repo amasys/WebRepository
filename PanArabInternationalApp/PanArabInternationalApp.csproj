@@ -236,10 +236,175 @@
     <Compile Include="sp_VisaProcessing_Result.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_AccountGroup.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_AccountGroupToCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_AccountLedger.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_AccountLedgerToCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_AccoutnsLdegerSL.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_AdditionalCost.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_AdvancePayment.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Agency.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_AirlinesOrShipping.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Area.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_AttendanceDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_AttendanceMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BankReconciliation.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BarcodeSettings.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Batch.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BOM.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BonusDeductionDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BonusDeductionMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Branch.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Brand.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BudgetAllocation.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BudgetMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BudgetPeriod.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Company.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CompanyPath.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ComponentsSettings.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Consignee.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ContraDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ContraMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Counter.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CounterSaleDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CounterSaleMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Currency.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CurrencyConversion.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_CurrencyToCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DamagelStockMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DamageStockDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DamageStockDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DebitNoteDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DebitNoteMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DeleteStatus.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DeliveryNoteDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DeliveryNoteDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DeliveryNoteMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Designation.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Destination.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Details.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DetailsCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_Disctrict.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DotMatrixSettings.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_DotMatrixSettingsToCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Employee.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ExitPoint.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Fields.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_FieldsCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_FinancialYear.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Finger.cs">
@@ -248,10 +413,91 @@
     <Compile Include="tbl_FlyDetails.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_Form.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_FormCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_GatePass.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Godown.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Holiday.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_IntrestParameterDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_IntrestParameterSettings.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_IntrestPayable.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_IntrestPayableDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_IntrestReceivable.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_IntrestReceivableDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_InvoiceDeclaration.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Job.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_JobInvoice.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_JobType.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_JobTypeToCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_JournelDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_JournelMaster.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_LedgerPosting.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_Manpower.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ManufacturingJounralDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ManufacturingJournalDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ManufacturingJournalMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Market.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Master.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_MasterCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_MaterialReceiptDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_MaterialReceiptDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_MaterialReceiptMaster.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Medical.cs">
@@ -260,19 +506,289 @@
     <Compile Include="tbl_Mofa.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_Origin.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PackageSale.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PartyBalance.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_Passenger.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_Passport.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_Payhead.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PaymentDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PaymentMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_PC_ConsoleLetter.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PDCPayable.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PDCReceivable.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PhysicalStockDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PhysicalStockDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PhysicalStockMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PriceList.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PricingLevel.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Privilege.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PrivilegeDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Product.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ProductDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ProductGroup.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PurchaseDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PurchaseDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PurchaseMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PurchaseOrderDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PurchaseOrderMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PurchaseReturnDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PurchaseReturnDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PurchaseReturnMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_QuickLaunch.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_QuickLaunchItems.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_QuickLaunchItemsToCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Quotation.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_QuotationDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_QuotationMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Rack.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ReceiptDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ReceiptMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_RejectionInDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_RejectionInDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_RejectionInMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_RejectionOutDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_RejectionOutDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_RejectionOutMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Reminder.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Route.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalaryDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalaryDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalaryMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalarySettings.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalarySettingsDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesOrderDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesOrderMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesPromotionDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesPromotionDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesPromotionMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesPromotionStatus.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesReturnDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesReturnDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SalesReturnMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Service.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ServiceDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_ServiceMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Settings.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Shipper.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_StandardRate.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_StockPosting.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_SuffixPrefix.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_TailoringDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_TailoringMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_TailoringPayment.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_TaxDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_TaxDetailsToCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_TaxMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_TaxMasterToCopy.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Temps.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Temps1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_TransferDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_TransferMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Unit.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_UnitConversion.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_UpdationStatus.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_UsedStockDetails1.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_UsedStockDetails2.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_UsedStockMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_User.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tbl_UserCreate.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbl_VatJournalDetails.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_VatJournalMaster.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_VehicleType.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbl_VisaProcessing.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewCashBank.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
     <Compile Include="viewExistPassportSlNo.cs">
@@ -282,6 +798,12 @@
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewGetAllPassenger.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewParty.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwCashInHandLedger.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

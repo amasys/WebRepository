@@ -37,6 +37,20 @@ namespace PanArabInternationalApp.DataAccess.Bll.Manager
 
         }
 
+        public tbl_VisaProcessing GetExistVisaProcessList(string PslNo)
+        {
+            if (IsConnection)
+            {
+                var tblVisaInformation = DbEntities.tbl_VisaProcessing.FirstOrDefault(a => a.FormSl == PslNo);
+                if (tblVisaInformation!=null)
+                {
+                    return tblVisaInformation;
+                }
+            }
+            return null;
+        }
+
+
 
         public List<Visa> GetListVisa()
         {

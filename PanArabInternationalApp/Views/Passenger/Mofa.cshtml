@@ -254,7 +254,7 @@
                 alert('Please Select Medical Exp.Date');
                 return;
             }
-
+           // alert(value.MofaDate);
 
             $.ajax({
                 type: "POST",
@@ -271,7 +271,10 @@
             });
         }
 
-        $('#example1').DataTable();
+        $('#example1').DataTable({
+            "ordering": false
+
+        });
         $('#example2').DataTable();
     </script>
 }

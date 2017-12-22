@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PanArabInternationalApp.DataAccess.Bll.Manager;
 using PanArabInternationalApp.DataAccess.Gatway;
 using PanArabInternationalApp.EmailConfig;
 using PanArabInternationalApp.Interface;
@@ -84,8 +85,7 @@ namespace PanArabInternationalApp.DataAccess.DAL
                     tblMedical.UserId = Environment.UserName;
                     tblMedical.MedicalContactAmount = Convert.ToInt32(medical.MedicalContactAmount);
 
-                    DbEntities.tbl_Medical.Add(tblMedical);
-                  count = DbEntities.SaveChanges();
+                  
                   
 
                 }
@@ -111,11 +111,13 @@ namespace PanArabInternationalApp.DataAccess.DAL
                             JournalPostingAddDr(passenger, masterJournalId, masterLedgr);
 
                             JournalPostingAddCr(passenger, masterJournalId, masterLedgr);
-                            return count;
+                            
                         }
                     }
+                    tblMedical.voucherNo = master.ToString();
                 }
-
+                DbEntities.tbl_Medical.Add(tblMedical);
+                count = DbEntities.SaveChanges();
 
                 return count;
             }
@@ -214,10 +216,41 @@ namespace PanArabInternationalApp.DataAccess.DAL
 
                 if (count > 0)
                 {
+                    Passenger medical=new Passenger();
+                    medical.Medical = passport;
+                    medical.PSlNo = passport.Formsl;
+                    medical.ContractAmmount = passport.MedicalContactAmount;
+                    medical.voucherno = passport.VoucherNo;
+                    UpdateMedical(medical);
+                    
                     return true;
                 }
             }
             return false;
+        }
+
+        public void UpdateMedical(Passenger medical)
+        {
+            tbl_Medical passengerList = DbEntities.tbl_Medical.SingleOrDefault(a => a.FormSl == medical.PSlNo);
+
+            if (passengerList != null)
+            {
+
+                passengerList.MedicalReport = medical.Medical.MedicalReport;
+
+              
+
+                if (medical.Medical.MedicalReport == "UN-FIT" && Convert.ToInt32(medical.Medical.MedicalContactAmount) > 0)
+                {
+                    passengerList.MedicalContactAmount = Convert.ToInt32(medical.Medical.MedicalContactAmount);
+                    medical.ContractAmmount = medical.Medical.MedicalContactAmount;
+                    medical.voucherno = Convert.ToInt32(passengerList.voucherNo);
+
+                    new AccountingManager().UpdatePassengerLedgerStatement(medical);
+                }
+
+                  DbEntities.SaveChanges();
+            }
         }
     }
 }

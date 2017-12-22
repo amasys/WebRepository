@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PanArabInternationalApp.DataAccess.Bll.Manager;
 using PanArabInternationalApp.DataAccess.Gatway;
 using PanArabInternationalApp.EmailConfig;
 using PanArabInternationalApp.Models;
@@ -26,15 +27,15 @@ namespace PanArabInternationalApp.DataAccess.DAL
                     tblPcConsoleLetter.ControlLetterRemarks = pcConsoleLetter.Available;
                     tblPcConsoleLetter.PCDate = Convert.ToDateTime(pcConsoleLetter.ClearenceDate);
                     tblPcConsoleLetter.PC_Status = pcConsoleLetter.PcStatus;
+                 
+                    
                     if (pcConsoleLetter.UpoadFileName!=null)
                     {
                         tblPcConsoleLetter.UploadName = pcConsoleLetter.UpoadFileName.FileName;
                    
                     }
                    
-                    DbEntities.tbl_PC_ConsoleLetter.Add(tblPcConsoleLetter);
-                    int count = DbEntities.SaveChanges();
-
+               
                     if (pcConsoleLetter.PCtype == "by Agency" && pcConsoleLetter.PcContactAmmount>0)
                     {
                         Passenger passenger = new Passenger();
@@ -57,19 +58,43 @@ namespace PanArabInternationalApp.DataAccess.DAL
                                 JournalPostingAddDr(passenger, masterJournalId, masterLedgr);
 
                                 JournalPostingAddCr(passenger, masterJournalId, masterLedgr);
-                                return count;
+                              
                             }
                         }
+                        tblPcConsoleLetter.voucherno = master.ToString();
                     }
 
-                    return count;
+                  
 
                 }
+            
+                DbEntities.tbl_PC_ConsoleLetter.Add(tblPcConsoleLetter);
+                int count = DbEntities.SaveChanges();
+                return count;
             }
             return 0;
         }
 
+        public void UpdatePoliceClearence(Passenger pcConsoleLetter)
+        {
+            tbl_PC_ConsoleLetter passengerList = DbEntities.tbl_PC_ConsoleLetter.SingleOrDefault(a => a.PslNo == pcConsoleLetter.PSlNo);
 
+            if (passengerList != null)
+            {
+
+                if (pcConsoleLetter.pcConsoleLetter.PcContactAmmount>0)
+                {
+                    passengerList.ContactAmount = Convert.ToInt32(pcConsoleLetter.pcConsoleLetter.PcContactAmmount);
+                    pcConsoleLetter.ContractAmmount = pcConsoleLetter.pcConsoleLetter.PcContactAmmount.ToString();
+
+                    pcConsoleLetter.voucherno = Convert.ToInt32(passengerList.voucherno);
+
+                    new AccountingManager().UpdatePassengerLedgerStatement(pcConsoleLetter);
+                }
+
+                DbEntities.SaveChanges();
+            }
+        }
 
         public bool IsExist(PC_ConsoleLetter pcConsoleLetter)
         {
@@ -80,6 +105,16 @@ namespace PanArabInternationalApp.DataAccess.DAL
 
                 if (count > 0)
                 {
+                  
+
+                        Passenger passenger = new Passenger();
+                        passenger.pcConsoleLetter = pcConsoleLetter;
+                        passenger.PSlNo = pcConsoleLetter.FormSlNo;
+                        passenger.ContractAmmount = pcConsoleLetter.PcContactAmmount.ToString();
+
+                        UpdatePoliceClearence(passenger);
+
+                    
                     return true;
                 }
             }
@@ -100,7 +135,7 @@ namespace PanArabInternationalApp.DataAccess.DAL
                     listOfCleardata.Add(new PC_ConsoleLetter
                     {
                         FormSlNo = value.PslNo,
-                        ClearenceDate = Convert.ToDateTime(value.PCDate),
+                        ClearenceDate = Convert.ToDateTime(Convert.ToDateTime(value.PCDate).ToString("dd-MMM-yy")),
                         PName = value.Pname,
                         PcStatus = value.PC_Status,
                         ConsoleStatus = value.CL_Status,

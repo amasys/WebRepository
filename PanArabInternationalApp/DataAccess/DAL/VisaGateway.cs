@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PanArabInternationalApp.DataAccess.Bll.Manager;
 using PanArabInternationalApp.DataAccess.Gatway;
 using PanArabInternationalApp.EmailConfig;
 using PanArabInternationalApp.Models;
@@ -41,14 +42,11 @@ namespace PanArabInternationalApp.DataAccess.DAL
 
                     tblVisaProcessing.DrivingLicnc = visa.DrivingLicenceNo;
                     tblVisaProcessing.ContractAmount = Convert.ToInt32(visa.ContractAmount);
-                    
-                    tblVisaProcessing.VisaStapmingDate = visa.VisaStapDate;
-                    DbEntities.tbl_VisaProcessing.Add(tblVisaProcessing);
 
-                    int count = DbEntities.SaveChanges();
 
-                   
-                    if (visa.Category=="Driver" && Convert.ToInt32(visa.ContractAmount) > 0)
+              
+
+                    if (visa.Category == "Driver" && Convert.ToInt32(visa.ContractAmount) > 0)
                     {
                         Passenger passenger = new Passenger();
 
@@ -70,12 +68,20 @@ namespace PanArabInternationalApp.DataAccess.DAL
                                 JournalPostingAddDr(passenger, masterJournalId, masterLedgr);
 
                                 JournalPostingAddCr(passenger, masterJournalId, masterLedgr);
-                                return count;
+
                             }
                         }
+                        tblVisaProcessing.voucherno = master.ToString();
                     }
-                    return count;
+
                 }
+
+                tblVisaProcessing.VisaStapmingDate = visa.VisaStapDate;
+                DbEntities.tbl_VisaProcessing.Add(tblVisaProcessing);
+
+                int count = DbEntities.SaveChanges();
+
+                return count;
             }
             return 0;
         }
@@ -247,7 +253,38 @@ namespace PanArabInternationalApp.DataAccess.DAL
 
         public void VisaUpdate(Visa visa)
         {
-            
+            Passenger medical = new Passenger();
+            medical.visa = visa;
+            medical.PSlNo = visa.FormSl;
+            medical.ContractAmmount = visa.ContractAmount;
+           
+            UpdateVisa(medical);
+        }
+
+        private void UpdateVisa(Passenger visaPassenger)
+        {
+            tbl_VisaProcessing passengerList = DbEntities.tbl_VisaProcessing.SingleOrDefault(a => a.FormSl == visaPassenger.PSlNo);
+
+            if (passengerList != null)
+            {
+
+
+
+
+
+                if (passengerList.Cateogry == "Driver" && Convert.ToInt32(visaPassenger.ContractAmmount) > 0)
+                {
+                    passengerList.ContractAmount = Convert.ToInt32(visaPassenger.ContractAmmount);
+
+                    passengerList.ContractAmount = Convert.ToInt32(visaPassenger.visa.ContractAmount);
+                    visaPassenger.ContractAmmount = visaPassenger.visa.ContractAmount;
+                    visaPassenger.voucherno = Convert.ToInt32(passengerList.voucherno);
+
+                    new AccountingManager().UpdatePassengerLedgerStatement(visaPassenger);
+                }
+
+                DbEntities.SaveChanges();
+            }
         }
 
 
@@ -255,10 +292,10 @@ namespace PanArabInternationalApp.DataAccess.DAL
         {
             List<SelectListItem> ListOfVisa = new List<SelectListItem>();
 
-            Dictionary<int,string>visaList=new Dictionary<int, string>();
-            visaList.Add(0,"House Worker");
-            visaList.Add(1,"House Driver");
-            visaList.Add(2,"Driver");
+            Dictionary<int, string> visaList = new Dictionary<int, string>();
+            visaList.Add(0, "House Worker");
+            visaList.Add(1, "House Driver");
+            visaList.Add(2, "Driver");
 
 
 

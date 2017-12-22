@@ -189,7 +189,7 @@
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
-                                                    @Html.TextAreaFor(model => model.ConsoleStatus, new { @class = "form-control", placeholder = "PC Status", @id = "pcstatus" })
+                                                    @Html.TextAreaFor(model => model.ConsoleStatus, new { @class = "form-control", placeholder = "PC Status", @id = "ConsoleStatus" })
 
                                                 </div>
                                                 @Html.ValidationMessageFor(model => model.ConsoleStatus)
@@ -313,23 +313,22 @@
         $('.modal').modal();
         $('#example1').DataTable();
 
-        $('#CAvaliable').click(function () {
+        $('#CAvaliable').click(function() {
             var value = $(this).val();
 
 
             $('#UploadOption').css("display", "block");
 
 
-
         });
 
-        $('#CNotAvaliable').click(function () {
+        $('#CNotAvaliable').click(function() {
             var value = $(this).val();
 
             $('#UploadOption').css("display", "none");
 
         });
-        $('#byOwn').click(function () {
+        $('#byOwn').click(function() {
 
 
             $('#optionnal').css("display", "none");
@@ -337,20 +336,25 @@
 
         });
 
-        $('#byAgency').click(function () {
+        $('#byAgency').click(function() {
 
             $('#optionnal').css("display", "block");
 
         });
 
-        $('#byAgency').click(function () {
+        $('#byAgency').click(function() {
 
             $('#optionnal').css("display", "block");
 
         });
+        function ToJavaScriptDate(value) {
+            var pattern = /Date\(([^)]+)\)/;
+            var results = pattern.exec(value);
+            var dt = new Date(parseFloat(results[1]));
+            return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+        }
 
-
-        $('.select2').on('change', function () {
+        $('.select2').on('change', function() {
             var slNo = this.value;
 
             //alert(slNo);
@@ -360,20 +364,22 @@
                 cache: false,
                 url: "/Passenger/GetPassengerInfo",
                 data: { pid: slNo },
-                success: function (result) {
+                success: function(result) {
                     $('#PName').val(result.PName);
                     $('#PassportNo').val(result.PassportNo);
                     $('#PcContactAmmount').val(result.PcContactAmmount);
-                
+                    $("#ConsoleStatus").val(result.ConsoleStatus);
+                    $("#pcstatus").val(result.PcStatus);
+                    
+                    $('#ClearenceDate').val(ToJavaScriptDate(result.ClearenceDate));
                     if (result.PcContactAmmount > 0) {
                         $('#optionnal').css("display", "block");
                         $('#byAgency').prop('checked', true);
                     }
+                 
 
-
-                        
                 },
-                error: function (textStatus, errorThrown) {
+                error: function(textStatus, errorThrown) {
                     alert('Error - ' + errorThrown);
                 }
             });

@@ -22,5 +22,6 @@ namespace PanArabInternationalApp
         public string ReportDescription { get; set; }
         public string UserId { get; set; }
         public Nullable<int> MedicalContactAmount { get; set; }
+        public string voucherNo { get; set; }
     }
 }

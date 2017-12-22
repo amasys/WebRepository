@@ -20,8 +20,10 @@ namespace PanArabInternationalApp.DataAccess.Bll.Manager
 
         private void AccountLedgerPostingupdate(PANARAB_dbEntities dbEntities, Passenger passenger)
         {
-            
 
+            dbEntities.Sp_LedgerAndJournalPostingUpdateDrCr(passenger.voucherno.ToString(),passenger.ContractAmmount,passenger.ContractAmmount,"cr","");
+
+            dbEntities.Sp_LedgerAndJournalPostingUpdateDrCr(passenger.voucherno.ToString(),passenger.ContractAmmount,passenger.ContractAmmount,"dr","");
         }
     }
 }

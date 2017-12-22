@@ -275,7 +275,7 @@ namespace PanArabInternationalApp.Controllers
                 ViewBag.ListOfPC = clearData;
                 ModelState.Clear();
 
-                var list = new PANARAB_dbEntities().viewExistPcClearences.ToList();
+                var list = new PANARAB_dbEntities().tbl_Passenger.ToList();
 
                 ViewBag.ListOfPassenger = list;
             }
@@ -304,6 +304,19 @@ namespace PanArabInternationalApp.Controllers
             return View(visaModel);
 
         }
+
+        [HttpPost]
+        public JsonResult GetVisaInformationIfExistDate(string pid)
+        {
+
+            var existVisa = new VisaManager().GetExistVisaProcessList(pid);
+
+            return Json(existVisa, JsonRequestBehavior.AllowGet);
+
+
+        }
+
+
 
         [HttpPost]
         public ActionResult Visa(Visa visa)
