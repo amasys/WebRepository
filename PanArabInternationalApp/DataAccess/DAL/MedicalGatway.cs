@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using PanArabInternationalApp.DataAccess.Bll.Manager;
@@ -246,9 +247,20 @@ namespace PanArabInternationalApp.DataAccess.DAL
                     medical.ContractAmmount = medical.Medical.MedicalContactAmount;
                     medical.voucherno = Convert.ToInt32(passengerList.voucherNo);
 
-                    new AccountingManager().UpdatePassengerLedgerStatement(medical);
-                }
+                    if (passengerList.voucherNo == null)
+                    {
+                        string voucherNoNewCreate = new AccountingManager().SaveJournal(medical);
 
+                        passengerList.voucherNo = voucherNoNewCreate;
+                    }
+                    else
+                    {
+                        new AccountingManager().UpdatePassengerLedgerStatement(medical);
+                        
+                    }
+               
+                }
+                DbEntities.Entry(passengerList).State = EntityState.Modified;   
                   DbEntities.SaveChanges();
             }
         }

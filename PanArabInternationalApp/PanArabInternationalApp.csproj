@@ -800,7 +800,13 @@
     <Compile Include="ViewGetAllPassenger.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="viewgroupID.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewParty.cs">
+      <DependentUpon>PanArabModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewPassport.cs">
       <DependentUpon>PanArabModel.tt</DependentUpon>
     </Compile>
     <Compile Include="vwCashInHandLedger.cs">

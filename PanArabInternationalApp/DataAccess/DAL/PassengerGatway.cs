@@ -120,6 +120,7 @@ namespace PanArabInternationalApp.DataAccess.DAL
                     passengerList.PermanentAddress = passenger.PpermanentAddress;
                     passengerList.PresentAddress = passenger.PPressentAddress;
                     passengerList.PContactNo = passengerList.PContactNo;
+                    passengerList.Ispassport = passenger.IsPassport;
 
                     DbEntities.SaveChanges();
 
@@ -163,7 +164,7 @@ namespace PanArabInternationalApp.DataAccess.DAL
                     passenger.PDescription = value.PDescription;
                     passenger.Date = value.Date;
                     passenger.PostOffice = value.PostOffice;
-
+                    
                     passenger.Pcontactno = value.PContactNo;
 
 

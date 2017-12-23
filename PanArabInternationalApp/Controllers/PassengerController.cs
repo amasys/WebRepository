@@ -228,13 +228,13 @@ namespace PanArabInternationalApp.Controllers
             mofaManager = new MofaManager();
             //var list = mofaManager.GetMofaClearence();
            // var list = new PANARAB_dbEntities().Sp_ExistPcClearence().ToList();
-            var list = new PANARAB_dbEntities().tbl_Passenger.ToList();
+            var list = new PANARAB_dbEntities().tbl_Mofa.ToList();
 
             
             ViewBag.ListOfPassenger = list;
 
 
-            var clearData = new PC_ClearenceManager().GetlistOfPC_Clearence().ToList();
+            var clearData = new PC_ClearenceManager().GetlistOfPC_Clearence().Where(a=>a.PcStatus!=null).ToList();
             ViewBag.ListOfPC = clearData;
 
             return View();
@@ -271,11 +271,11 @@ namespace PanArabInternationalApp.Controllers
                 var message = new PC_ClearenceManager().Save(pcConsoleLetter);
                 ViewBag.Message = message;
 
-                var clearData = new PC_ClearenceManager().GetlistOfPC_Clearence().ToList();
+                var clearData = new PC_ClearenceManager().GetlistOfPC_Clearence().Where(a => a.PcStatus != null).ToList();
                 ViewBag.ListOfPC = clearData;
                 ModelState.Clear();
 
-                var list = new PANARAB_dbEntities().tbl_Passenger.ToList();
+                var list = new PANARAB_dbEntities().tbl_Mofa.ToList();
 
                 ViewBag.ListOfPassenger = list;
             }

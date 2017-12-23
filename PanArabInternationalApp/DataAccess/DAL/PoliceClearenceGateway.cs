@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using PanArabInternationalApp.DataAccess.Bll.Manager;
@@ -11,12 +12,25 @@ namespace PanArabInternationalApp.DataAccess.DAL
 {
     public class PoliceClearenceGateway:Connection
     {
+        public bool MofaCheck(PC_ConsoleLetter pcConsoleLetter)
+        {
+            if (DbEntities.tbl_Mofa.Count(a => a.FormSl == pcConsoleLetter.FormSlNo) > 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         public int Add(PC_ConsoleLetter pcConsoleLetter)
         {
             if (IsConnection)
             {
                 tbl_PC_ConsoleLetter tblPcConsoleLetter = new tbl_PC_ConsoleLetter();
 
+              
                 if (tblPcConsoleLetter.Id == 0)
                 {
 
@@ -86,12 +100,23 @@ namespace PanArabInternationalApp.DataAccess.DAL
                 {
                     passengerList.ContactAmount = Convert.ToInt32(pcConsoleLetter.pcConsoleLetter.PcContactAmmount);
                     pcConsoleLetter.ContractAmmount = pcConsoleLetter.pcConsoleLetter.PcContactAmmount.ToString();
+                    if (passengerList.voucherno==null)
+                    {
+                      
 
-                    pcConsoleLetter.voucherno = Convert.ToInt32(passengerList.voucherno);
+                      string voucherNo=  new AccountingManager().SaveJournal(pcConsoleLetter);
 
-                    new AccountingManager().UpdatePassengerLedgerStatement(pcConsoleLetter);
+                        passengerList.voucherno = voucherNo;
+                    }
+                    else
+                    {
+                        pcConsoleLetter.voucherno = Convert.ToInt32(passengerList.voucherno);
+
+                        new AccountingManager().UpdatePassengerLedgerStatement(pcConsoleLetter);
+                    }
+                   
                 }
-
+                DbEntities.Entry(passengerList).State=EntityState.Modified;
                 DbEntities.SaveChanges();
             }
         }

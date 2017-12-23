@@ -32,9 +32,7 @@ namespace PanArabInternationalApp
         public DbSet<tbl_Manpower> tbl_Manpower { get; set; }
         public DbSet<tbl_Mofa> tbl_Mofa { get; set; }
         public DbSet<tbl_UserCreate> tbl_UserCreate { get; set; }
-        public DbSet<tbl_VisaProcessing> tbl_VisaProcessing { get; set; }
         public DbSet<tbl_Disctrict> tbl_Disctrict { get; set; }
-        public DbSet<ViewGetAllPassenger> ViewGetAllPassengers { get; set; }
         public DbSet<tbl_Medical> tbl_Medical { get; set; }
         public DbSet<tbl_Passport> tbl_Passport { get; set; }
         public DbSet<tbl_Finger> tbl_Finger { get; set; }
@@ -218,6 +216,10 @@ namespace PanArabInternationalApp
         public DbSet<ViewCashBank> ViewCashBanks { get; set; }
         public DbSet<ViewParty> ViewParties { get; set; }
         public DbSet<vwCashInHandLedger> vwCashInHandLedgers { get; set; }
+        public DbSet<viewgroupID> viewgroupIDs { get; set; }
+        public DbSet<viewPassport> viewPassports { get; set; }
+        public DbSet<ViewGetAllPassenger> ViewGetAllPassengers { get; set; }
+        public DbSet<tbl_VisaProcessing> tbl_VisaProcessing { get; set; }
     
         public virtual ObjectResult<SpPassport_Result> SpPassport()
         {

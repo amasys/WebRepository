@@ -4,14 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ac5ed80f5e1d43318db1a147f150c3f5" Name="Diagram1" ZoomLevel="74">
+      <Diagram DiagramId="ac5ed80f5e1d43318db1a147f150c3f5" Name="Diagram1" ZoomLevel="88">
         <EntityTypeShape EntityType="PANARAB_dbModel.tbl_FlyDetails" Width="1.5" PointX="3.75" PointY="0.75" />
         <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Manpower" Width="1.5" PointX="3.75" PointY="4.75" />
         <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Mofa" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="PANARAB_dbModel.tbl_UserCreate" Width="1.5" PointX="5.5" PointY="4.625" />
-        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_VisaProcessing" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Disctrict" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="PANARAB_dbModel.ViewGetAllPassenger" Width="3.5" PointX="10.5" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Medical" Width="1.5" PointX="4.25" PointY="7.375" />
         <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Passport" Width="1.5" PointX="6" PointY="6.75" />
         <EntityTypeShape EntityType="PANARAB_dbModel.tbl_Finger" Width="1.5" PointX="10.375" PointY="0.75" />
@@ -195,6 +193,10 @@
         <EntityTypeShape EntityType="PANARAB_dbModel.ViewCashBank" Width="1.5" PointX="43.75" PointY="36.75" />
         <EntityTypeShape EntityType="PANARAB_dbModel.ViewParty" Width="1.5" PointX="43.75" PointY="38.75" />
         <EntityTypeShape EntityType="PANARAB_dbModel.vwCashInHandLedger" Width="1.5" PointX="43.75" PointY="40.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.viewgroupID" Width="1.5" PointX="26.375" PointY="44.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.viewPassport" Width="1.5" PointX="34.375" PointY="44.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.ViewGetAllPassenger" Width="1.5" PointX="36.375" PointY="44.75" />
+        <EntityTypeShape EntityType="PANARAB_dbModel.tbl_VisaProcessing" Width="2.25" PointX="38.375" PointY="44.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

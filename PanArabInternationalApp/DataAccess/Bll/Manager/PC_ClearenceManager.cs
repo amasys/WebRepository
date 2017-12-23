@@ -15,14 +15,18 @@ namespace PanArabInternationalApp.DataAccess.Bll.Manager
             {
                 if (IsExist(pcConsoleLetter))
                 {
-                    return "This Passenger Already Exist";
+                    return "This Passenger is Updated";
                 }
                 else
                 {
-                    if (Add(pcConsoleLetter) > 0)
-                    {
-                        return "Save";
-                    }
+                   
+                        if (Add(pcConsoleLetter) > 0)
+                        {
+                            return "Save";
+                        }     
+                   
+                    
+                  
                     return "Save Failed";
                 }
             }

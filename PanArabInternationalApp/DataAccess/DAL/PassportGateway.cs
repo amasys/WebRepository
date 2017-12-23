@@ -89,7 +89,6 @@ namespace PanArabInternationalApp.DataAccess.DAL
                     passport.PpDeleveryDate = value.PassportDeleveryDate.ToString();
                     passport.Remarks = Convert.ToString(value.Remarks);
                     passport.Pslipno = Convert.ToString(value.PSlipNo);
-
                     list.Add(passport);
 
 

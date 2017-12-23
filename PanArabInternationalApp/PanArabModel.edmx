@@ -3645,6 +3645,29 @@ warning 6002: The table/view 'PANARAB_db.dbo.ViewGetAllPassenger' does not have 
           <Property Name="Date" Type="date" />
           <Property Name="District" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PANARAB_db.dbo.viewgroupID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewgroupID">
+          <Key>
+            <PropertyRef Name="groupId" />
+          </Key>
+          <Property Name="groupId" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PANARAB_db.dbo.viewPassport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="viewPassport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Pname" Type="varchar" MaxLength="50" />
+          <Property Name="PslNo" Type="varchar" MaxLength="50" />
+          <Property Name="PassportNo" Type="varchar" MaxLength="50" />
+          <Property Name="MedicalDate" Type="date" />
+          <Property Name="MedicalExpDate" Type="date" />
+          <Property Name="MedicalReport" Type="varchar" MaxLength="50" />
+          <Property Name="ReportDescription" Type="varchar(max)" />
+        </EntityType>
         <Function Name="AccountLedgerAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
           <Parameter Name="groupId" Type="varchar" Mode="In" />
@@ -6677,6 +6700,23 @@ FROM [dbo].[viewExistPcClearence] AS [viewExistPcClearence]</DefiningQuery>
 [ViewGetAllPassenger].[District] AS [District]
 FROM [dbo].[ViewGetAllPassenger] AS [ViewGetAllPassenger]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="viewgroupID" EntityType="Self.viewgroupID" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[viewgroupID].[groupId] AS [groupId]
+FROM [dbo].[viewgroupID] AS [viewgroupID]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="viewPassport" EntityType="Self.viewPassport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[viewPassport].[Id] AS [Id], 
+[viewPassport].[Pname] AS [Pname], 
+[viewPassport].[PslNo] AS [PslNo], 
+[viewPassport].[PassportNo] AS [PassportNo], 
+[viewPassport].[MedicalDate] AS [MedicalDate], 
+[viewPassport].[MedicalExpDate] AS [MedicalExpDate], 
+[viewPassport].[MedicalReport] AS [MedicalReport], 
+[viewPassport].[ReportDescription] AS [ReportDescription]
+FROM [dbo].[viewPassport] AS [viewPassport]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -6687,9 +6727,7 @@ FROM [dbo].[ViewGetAllPassenger] AS [ViewGetAllPassenger]</DefiningQuery>
           <EntitySet Name="tbl_Manpower" EntityType="PANARAB_dbModel.tbl_Manpower" />
           <EntitySet Name="tbl_Mofa" EntityType="PANARAB_dbModel.tbl_Mofa" />
           <EntitySet Name="tbl_UserCreate" EntityType="PANARAB_dbModel.tbl_UserCreate" />
-          <EntitySet Name="tbl_VisaProcessing" EntityType="PANARAB_dbModel.tbl_VisaProcessing" />
           <EntitySet Name="tbl_Disctrict" EntityType="PANARAB_dbModel.tbl_Disctrict" />
-          <EntitySet Name="ViewGetAllPassengers" EntityType="PANARAB_dbModel.ViewGetAllPassenger" />
           <EntitySet Name="tbl_Medical" EntityType="PANARAB_dbModel.tbl_Medical" />
           <EntitySet Name="tbl_Passport" EntityType="PANARAB_dbModel.tbl_Passport" />
           <EntitySet Name="tbl_Finger" EntityType="PANARAB_dbModel.tbl_Finger" />
@@ -6964,7 +7002,11 @@ FROM [dbo].[ViewGetAllPassenger] AS [ViewGetAllPassenger]</DefiningQuery>
             <Parameter Name="checkedDrCr" Mode="In" Type="String" />
             <Parameter Name="query" Mode="In" Type="String" />
           </FunctionImport>
-        </EntityContainer>
+          <EntitySet Name="viewgroupIDs" EntityType="PANARAB_dbModel.viewgroupID" />
+          <EntitySet Name="viewPassports" EntityType="PANARAB_dbModel.viewPassport" />
+          <EntitySet Name="ViewGetAllPassengers" EntityType="PANARAB_dbModel.ViewGetAllPassenger" />
+          <EntitySet Name="tbl_VisaProcessing" EntityType="PANARAB_dbModel.tbl_VisaProcessing" />
+          </EntityContainer>
         <EntityType Name="tbl_FlyDetails">
           <Key>
             <PropertyRef Name="Id" />
@@ -7008,60 +7050,11 @@ FROM [dbo].[ViewGetAllPassenger] AS [ViewGetAllPassenger]</DefiningQuery>
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="tbl_VisaProcessing">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FormSl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Cateogry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Okela" Type="Boolean" />
-          <Property Name="VisaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IssueDate" Type="DateTime" Precision="0" />
-          <Property Name="IssuePlace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VisaStapmingDate" Type="DateTime" Precision="0" />
-          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MusaniDate" Type="DateTime" Precision="0" />
-          <Property Name="MusaniRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ContractAmount" Type="Int32" />
-          <Property Name="DrivingLicnc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="OkeylaDate" Type="DateTime" Precision="0" />
-          <Property Name="OkeylaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OkeylaRemarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SponserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SponcerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="VisaReffNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="voucherno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="tbl_Disctrict">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="ViewGetAllPassenger">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="PslNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Pname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PfatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PmotherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PHusband" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PGender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PNationalIdCard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PresentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PostOffice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Pdistrict" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PContactAmount" Type="Int32" />
-          <Property Name="PDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DOB" Type="DateTime" Precision="0" />
-          <Property Name="PermanentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tbl_Medical">
@@ -10456,6 +10449,74 @@ FROM [dbo].[ViewGetAllPassenger] AS [ViewGetAllPassenger]</DefiningQuery>
           </Key>
           <Property Name="groupId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="viewgroupID">
+          <Key>
+            <PropertyRef Name="groupId" />
+          </Key>
+          <Property Name="groupId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="viewPassport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Pname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PslNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PassportNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MedicalDate" Type="DateTime" Precision="0" />
+          <Property Name="MedicalExpDate" Type="DateTime" Precision="0" />
+          <Property Name="MedicalReport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReportDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ViewGetAllPassenger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PslNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PfatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PmotherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PHusband" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PGender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PNationalIdCard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PresentAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostOffice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pdistrict" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PContactAmount" Type="Int32" />
+          <Property Name="PDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_VisaProcessing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormSl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cateogry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Okela" Type="Boolean" />
+          <Property Name="VisaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IssueDate" Type="DateTime" Precision="0" />
+          <Property Name="IssuePlace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VisaStapmingDate" Type="DateTime" Precision="0" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MusaniDate" Type="DateTime" Precision="0" />
+          <Property Name="MusaniRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContractAmount" Type="Int32" />
+          <Property Name="DrivingLicnc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OkeylaDate" Type="DateTime" Precision="0" />
+          <Property Name="OkeylaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OkeylaRemarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SponserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SponcerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VisaReffNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="voucherno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10509,61 +10570,10 @@ FROM [dbo].[ViewGetAllPassenger] AS [ViewGetAllPassenger]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tbl_VisaProcessing">
-            <EntityTypeMapping TypeName="PANARAB_dbModel.tbl_VisaProcessing">
-              <MappingFragment StoreEntitySet="tbl_VisaProcessing">
-                <ScalarProperty Name="voucherno" ColumnName="voucherno" />
-                <ScalarProperty Name="VisaReffNo" ColumnName="VisaReffNo" />
-                <ScalarProperty Name="SponcerName" ColumnName="SponcerName" />
-                <ScalarProperty Name="SponserId" ColumnName="SponserId" />
-                <ScalarProperty Name="OkeylaRemarks" ColumnName="OkeylaRemarks" />
-                <ScalarProperty Name="OkeylaNo" ColumnName="OkeylaNo" />
-                <ScalarProperty Name="OkeylaDate" ColumnName="OkeylaDate" />
-                <ScalarProperty Name="DrivingLicnc" ColumnName="DrivingLicnc" />
-                <ScalarProperty Name="ContractAmount" ColumnName="ContractAmount" />
-                <ScalarProperty Name="MusaniRemarks" ColumnName="MusaniRemarks" />
-                <ScalarProperty Name="MusaniDate" ColumnName="MusaniDate" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="VisaStapmingDate" ColumnName="VisaStapmingDate" />
-                <ScalarProperty Name="IssuePlace" ColumnName="IssuePlace" />
-                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
-                <ScalarProperty Name="VisaNo" ColumnName="VisaNo" />
-                <ScalarProperty Name="Okela" ColumnName="Okela" />
-                <ScalarProperty Name="Cateogry" ColumnName="Cateogry" />
-                <ScalarProperty Name="FormSl" ColumnName="FormSl" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_Disctrict">
             <EntityTypeMapping TypeName="PANARAB_dbModel.tbl_Disctrict">
               <MappingFragment StoreEntitySet="tbl_Disctrict">
                 <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewGetAllPassengers">
-            <EntityTypeMapping TypeName="PANARAB_dbModel.ViewGetAllPassenger">
-              <MappingFragment StoreEntitySet="ViewGetAllPassenger">
-                <ScalarProperty Name="District" ColumnName="District" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="PDescription" ColumnName="PDescription" />
-                <ScalarProperty Name="PContactAmount" ColumnName="PContactAmount" />
-                <ScalarProperty Name="PContactNo" ColumnName="PContactNo" />
-                <ScalarProperty Name="Pdistrict" ColumnName="Pdistrict" />
-                <ScalarProperty Name="PostOffice" ColumnName="PostOffice" />
-                <ScalarProperty Name="PresentAddress" ColumnName="PresentAddress" />
-                <ScalarProperty Name="PNationalIdCard" ColumnName="PNationalIdCard" />
-                <ScalarProperty Name="PGender" ColumnName="PGender" />
-                <ScalarProperty Name="PHusband" ColumnName="PHusband" />
-                <ScalarProperty Name="PmotherName" ColumnName="PmotherName" />
-                <ScalarProperty Name="PfatherName" ColumnName="PfatherName" />
-                <ScalarProperty Name="Pname" ColumnName="Pname" />
-                <ScalarProperty Name="PslNo" ColumnName="PslNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -14207,7 +14217,79 @@ FROM [dbo].[ViewGetAllPassenger] AS [ViewGetAllPassenger]</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="Sp_LedgerAndJournalPostingUpdateDrCr" FunctionName="PANARAB_dbModel.Store.Sp_LedgerAndJournalPostingUpdateDrCr" />
-        </EntityContainerMapping>
+          <EntitySetMapping Name="viewgroupIDs">
+            <EntityTypeMapping TypeName="PANARAB_dbModel.viewgroupID">
+              <MappingFragment StoreEntitySet="viewgroupID">
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="viewPassports">
+            <EntityTypeMapping TypeName="PANARAB_dbModel.viewPassport">
+              <MappingFragment StoreEntitySet="viewPassport">
+                <ScalarProperty Name="ReportDescription" ColumnName="ReportDescription" />
+                <ScalarProperty Name="MedicalReport" ColumnName="MedicalReport" />
+                <ScalarProperty Name="MedicalExpDate" ColumnName="MedicalExpDate" />
+                <ScalarProperty Name="MedicalDate" ColumnName="MedicalDate" />
+                <ScalarProperty Name="PassportNo" ColumnName="PassportNo" />
+                <ScalarProperty Name="PslNo" ColumnName="PslNo" />
+                <ScalarProperty Name="Pname" ColumnName="Pname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewGetAllPassengers">
+            <EntityTypeMapping TypeName="PANARAB_dbModel.ViewGetAllPassenger">
+              <MappingFragment StoreEntitySet="ViewGetAllPassenger">
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="PDescription" ColumnName="PDescription" />
+                <ScalarProperty Name="PContactAmount" ColumnName="PContactAmount" />
+                <ScalarProperty Name="PContactNo" ColumnName="PContactNo" />
+                <ScalarProperty Name="Pdistrict" ColumnName="Pdistrict" />
+                <ScalarProperty Name="PostOffice" ColumnName="PostOffice" />
+                <ScalarProperty Name="PresentAddress" ColumnName="PresentAddress" />
+                <ScalarProperty Name="PNationalIdCard" ColumnName="PNationalIdCard" />
+                <ScalarProperty Name="PGender" ColumnName="PGender" />
+                <ScalarProperty Name="PHusband" ColumnName="PHusband" />
+                <ScalarProperty Name="PmotherName" ColumnName="PmotherName" />
+                <ScalarProperty Name="PfatherName" ColumnName="PfatherName" />
+                <ScalarProperty Name="Pname" ColumnName="Pname" />
+                <ScalarProperty Name="PslNo" ColumnName="PslNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VisaProcessing">
+            <EntityTypeMapping TypeName="PANARAB_dbModel.tbl_VisaProcessing">
+              <MappingFragment StoreEntitySet="tbl_VisaProcessing">
+                <ScalarProperty Name="voucherno" ColumnName="voucherno" />
+                <ScalarProperty Name="VisaReffNo" ColumnName="VisaReffNo" />
+                <ScalarProperty Name="SponcerName" ColumnName="SponcerName" />
+                <ScalarProperty Name="SponserId" ColumnName="SponserId" />
+                <ScalarProperty Name="OkeylaRemarks" ColumnName="OkeylaRemarks" />
+                <ScalarProperty Name="OkeylaNo" ColumnName="OkeylaNo" />
+                <ScalarProperty Name="OkeylaDate" ColumnName="OkeylaDate" />
+                <ScalarProperty Name="DrivingLicnc" ColumnName="DrivingLicnc" />
+                <ScalarProperty Name="ContractAmount" ColumnName="ContractAmount" />
+                <ScalarProperty Name="MusaniRemarks" ColumnName="MusaniRemarks" />
+                <ScalarProperty Name="MusaniDate" ColumnName="MusaniDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VisaStapmingDate" ColumnName="VisaStapmingDate" />
+                <ScalarProperty Name="IssuePlace" ColumnName="IssuePlace" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="VisaNo" ColumnName="VisaNo" />
+                <ScalarProperty Name="Okela" ColumnName="Okela" />
+                <ScalarProperty Name="Cateogry" ColumnName="Cateogry" />
+                <ScalarProperty Name="FormSl" ColumnName="FormSl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

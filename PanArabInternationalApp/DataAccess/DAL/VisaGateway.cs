@@ -53,25 +53,10 @@ namespace PanArabInternationalApp.DataAccess.DAL
                         passenger.PSlNo = visa.FormSl;
                         passenger.PName = visa.Pname;
                         passenger.ContractAmmount = visa.ContractAmount;
+                        string masterJournalMaxId = new AccountingManager().SaveJournal(passenger);
+                        tblVisaProcessing.ContractAmount = Convert.ToInt32(visa.ContractAmount);
+                        tblVisaProcessing.voucherno = masterJournalMaxId;
 
-                        int master = JournalMasterAdd(passenger);
-                        if (master > 0)
-                        {
-
-
-                            int detials = JournalDetialsAdd(passenger, master);
-                            if (detials > 0)
-                            {
-                                string masterJournalId = master.ToString();
-                                string masterLedgr = DbEntities.tbl_AccountLedger.FirstOrDefault(a => a.name == passenger.PSlNo).ledgerId;
-
-                                JournalPostingAddDr(passenger, masterJournalId, masterLedgr);
-
-                                JournalPostingAddCr(passenger, masterJournalId, masterLedgr);
-
-                            }
-                        }
-                        tblVisaProcessing.voucherno = master.ToString();
                     }
 
                 }
@@ -86,87 +71,7 @@ namespace PanArabInternationalApp.DataAccess.DAL
             return 0;
         }
 
-
-        public int JournalMasterAdd(Passenger passenger)
-        {
-            int jmaster = 0;
-            var masterJournalId = DbEntities.tbl_JournelMaster.ToList();
-
-            var max = masterJournalId.Max(a => Convert.ToInt32(a.JournalMasterId) + 1).ToString();
-            try
-            {
-                jmaster = DbEntities.JournelMasterAdd(max, DateTime.Today, passenger.PDescription, false, passenger.userid, "1", "", "", "");
-                DbEntities.SaveChanges();
-                return Convert.ToInt32(max);
-            }
-            catch (Exception ex)
-            {
-                new CustomizeMessageSentToEmail().SentMail(ex);
-                return jmaster;
-
-            }
-
-        }
-
-        public int JournalDetialsAdd(Passenger passenger, int journalMaxId)
-        {
-            int jdetailsdr = 0;
-            try
-            {
-                DbEntities = new PANARAB_dbEntities();
-
-                //  string masterJournalId = DbEntities.tbl_JournelMaster.Max(a =>a.JournalMasterId);
-                // string masterLedgr = DbEntities.tbl_AccountLedger.Max(a =>a.ledgerId);
-
-                int jdetailscr = DbEntities.JournelDetailsAddPassenger(journalMaxId.ToString(), Convert.ToDecimal(passenger.ContractAmmount), Convert.ToDecimal(0.00), "", "", "");
-                jdetailsdr = DbEntities.JournelDetailsAdd(journalMaxId.ToString(), "45", Convert.ToDecimal(0.00), Convert.ToDecimal(passenger.ContractAmmount), "", "", "");
-
-                DbEntities.SaveChanges();
-
-
-            }
-            catch (Exception ex)
-            {
-
-                new CustomizeMessageSentToEmail().SentMail(ex);
-            }
-
-            return jdetailsdr;
-        }
-
-        public void JournalPostingAddDr(Passenger passenger, string masterJournalId, string masterLedgr)
-        {
-            //changing 45 
-            try
-            {
-                DbEntities.LedgerPostingAdd(DateTime.Today, "Journal Voucher", masterJournalId, masterLedgr, Convert.ToDecimal(passenger.ContractAmmount), Convert.ToDecimal(0.0), false, "1", "45", null);
-
-            }
-            catch (Exception ex)
-            {
-
-                new CustomizeMessageSentToEmail().SentMail(ex);
-            }
-
-
-        }
-        public void JournalPostingAddCr(Passenger passenger, string masterJournalId, string masterLedgr)
-        {
-            //changing 45 
-            try
-            {
-                DbEntities.LedgerPostingAdd(DateTime.Today, "Journal Voucher", masterJournalId, "45", Convert.ToDecimal(0.0), Convert.ToDecimal(passenger.ContractAmmount), false, "1", masterLedgr, null);
-
-
-            }
-            catch (Exception ex)
-            {
-
-                new CustomizeMessageSentToEmail().SentMail(ex);
-            }
-
-        }
-
+       
         public bool IsExist(Visa visa)
         {
             if (IsConnection)
@@ -257,7 +162,7 @@ namespace PanArabInternationalApp.DataAccess.DAL
             medical.visa = visa;
             medical.PSlNo = visa.FormSl;
             medical.ContractAmmount = visa.ContractAmount;
-           
+          
             UpdateVisa(medical);
         }
 
@@ -268,22 +173,40 @@ namespace PanArabInternationalApp.DataAccess.DAL
             if (passengerList != null)
             {
 
-
-
-
-
-                if (passengerList.Cateogry == "Driver" && Convert.ToInt32(visaPassenger.ContractAmmount) > 0)
+                if (visaPassenger.visa.Category== "Driver" && Convert.ToInt32(visaPassenger.ContractAmmount) > 0)
                 {
                     passengerList.ContractAmount = Convert.ToInt32(visaPassenger.ContractAmmount);
 
                     passengerList.ContractAmount = Convert.ToInt32(visaPassenger.visa.ContractAmount);
                     visaPassenger.ContractAmmount = visaPassenger.visa.ContractAmount;
-                    visaPassenger.voucherno = Convert.ToInt32(passengerList.voucherno);
 
-                    new AccountingManager().UpdatePassengerLedgerStatement(visaPassenger);
+                    var existingVoucher = passengerList.voucherno;
+                    if (existingVoucher == null)
+                    {
+
+                        string voucherNoNewCreate = new AccountingManager().SaveJournal(visaPassenger);
+
+                        passengerList.voucherno = voucherNoNewCreate;
+
+                    }
+                    else
+                    {
+                        visaPassenger.voucherno = Convert.ToInt32(passengerList.voucherno);
+
+                        new AccountingManager().UpdatePassengerLedgerStatement(visaPassenger);
+
+                    }
+
                 }
-
+                else
+                {
+                    passengerList.ContractAmount = 0;
+                    passengerList.voucherno = null;
+                    passengerList.Cateogry = visaPassenger.visa.Category;
+                }
+                DbEntities.Entry(passengerList).State=EntityState.Modified;   
                 DbEntities.SaveChanges();
+                
             }
         }
 
